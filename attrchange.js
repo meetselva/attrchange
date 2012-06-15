@@ -52,7 +52,7 @@ A simple jQuery function that can be used to add listeners on attribute change.
 	} else if ('onpropertychange' in document.body) {
 		//works only in IE
 		return this.on('propertychange', function(e) {
-			callback.call(this, e.propertyName);
+			callback.call(this, window.event.propertyName);
 		});
 	}
    }
