@@ -16,7 +16,6 @@ Public License for more details.
 You should have received a copy  of the GNU General Public License along
 with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-//Initial version of a cross-browser proof attrchange listener. (How proof is it? yet to be tested :) )
 (function($) {
    function isDOMAttrModifiedSupported() {
 	var p = document.createElement('p');
