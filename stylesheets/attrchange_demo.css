@@ -11,7 +11,7 @@ h4.title { font-weight: bold; background-color: #C95400; color: white; padding: 
 .attrList p a, .attrList p span { font-size: 0.7em; vertical-align: bottom; margin-top: 2px; }
 .addAttribute  { font-size: 0.7em; margin-top: 10px; }
 
-#logger { position: fixed; height: 200px; width: 95%; overflow: auto; border: #3E6B9D; background-color: #4169E1; color: white; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; }
+#logger { height: 200px; width: 95%; overflow: auto; border: #3E6B9D; background-color: #4169E1; color: white; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; }
 #logger p.even { background-color: #6179F1; }
 
 .text-right { text-align: right; }
