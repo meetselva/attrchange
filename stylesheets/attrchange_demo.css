@@ -1,0 +1,28 @@
+div.demo-content { z-index: 1; border: 1px solid #FF9B08; background-color: #F9EDB1; width: 300px;  }
+div.demo-content div { border: 1px dotted #C95400; width: 100px; height: 20px; margin: 10px; padding: 5px; font-size: 0.9em; background-color: #FEFFE5; color: #574353; z-index: 1009; }
+div.demo-content div:hover { border-style: solid; }
+div.demo-content div.selected { border-style: solid; background-color: #C95400; color: white; }
+
+#attributeChanger { border: 1px solid #C95400; min-height: 50px; margin: 10px; padding: 2px; font-size: 0.8em; background-color: #FEFFE5; color: #574353; opacity: 0; position: absolute; top: -200px; z-index: -1; filter: alpha(opacity=0); z-index:0; min-width: 150px;  }
+
+h4.title { font-weight: bold; background-color: #C95400; color: white; padding: 1px 3px;  }
+
+.attrList p { width: 95%; margin-top: 3px; }
+.attrList p a, .attrList p span { font-size: 0.7em; vertical-align: bottom; margin-top: 2px; }
+.addAttribute  { font-size: 0.7em; margin-top: 10px; }
+
+#logger { position: fixed; height: 200px; width: 95%; overflow: auto; border: #3E6B9D; background-color: #4169E1; color: white; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; }
+#logger p.even { background-color: #6179F1; }
+
+.text-right { text-align: right; }
+.float-right { float: right; }
+.clear { clear: both; }
+.strong { font-weight: bold; }
+.nbnbg { border-width: 0px; background-color: transparent; }
+
+#addOrmodifyAttr { font-size: 0.8em; width: 250px; border: 1px solid #FF9B08; background-color: #F9EDB1; padding: 5px 2px; position: absolute; display: none; z-index: 1011; top: 20%; left: 30%; }
+#addOrmodifyAttr p { margin-top: 5px; padding: 0px 5px; }
+#addOrmodifyAttr button { font-size: 0.8em; }
+#addOrmodifyAttr input { text-align: right; font-size: 0.9em; }
+
+#overlay { display: none; background-color: #000; opacity: 0.7; filter: alpha(opacity = 70); position: fixed; top: 0; left: 0; width: 100%; height: 2000px; z-index: 1010; }
