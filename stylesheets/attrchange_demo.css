@@ -25,7 +25,7 @@ p { margin: 4px 0 8px; }
 .strong { font-weight: bold; }
 .nbnbg { border-width: 0px; background-color: transparent; }
 
-#addOrmodifyAttr { font-size: 0.8em; width: 250px; border: 1px solid #FF9B08; background-color: #F9EDB1; padding: 5px 2px; position: absolute; display: none; z-index: 1011; top: 20%; left: 30%; }
+#addOrmodifyAttr { font-size: 0.8em; width: 250px; border: 1px solid #4169E1; background-color: #DADFFA; padding: 5px 2px; position: absolute; display: none; z-index: 1011; top: 20%; left: 30%; }
 #addOrmodifyAttr p { margin-top: 5px; padding: 0px 5px; }
 #addOrmodifyAttr button { font-size: 0.8em; }
 #addOrmodifyAttr input { text-align: right; font-size: 0.9em; }
