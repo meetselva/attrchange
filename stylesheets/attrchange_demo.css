@@ -10,6 +10,7 @@ h4.title { font-weight: bold; background-color: #4169E1; color: white; padding: 
 /* overrides */
 h1, h2, h3, h4, h5, h6 { margin: 0px; }
 p { margin: 4px 0 8px; }
+b { font-weight: bold; }
 /* overrides */
 
 .attrList p { width: 95%; margin-top: 3px; margin-left: 5px; }
