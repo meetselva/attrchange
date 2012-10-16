@@ -7,12 +7,19 @@
     <meta name="description" content="Attrchange : onattrchange listener" />
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/attrchange_demo.css">
+    
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="https://raw.github.com/meetselva/attrchange/master/attrchange.js" type="text/javascript"></script>    
+    <script src="javascripts/attrchange_demo.js" type="text/javascript"></script>
 
     <title>Attrchange</title>
     
     <style>
       .strong { font-weight: bold; }
-      .small { font-size: 0.8em; }
+      .beta { font-size: 0.4em; color: #0077DE; }
     </style>
     
   </head>
@@ -24,7 +31,7 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/meetselva/attrchange">View on GitHub</a>
 
-          <h1 id="project_title">Attrchange <span class="small">beta</span></h1>
+          <h1 id="project_title">Attrchange <span class="beta">beta</span></h1>
           <h2 id="project_tagline">onattrchange listener</h2>
 
             <section id="downloads">
@@ -41,11 +48,38 @@
 
 <p><a class="strong" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js">attrchange</a> is a simple jQuery function to add listener function to any HTML element on attribute change. </p>
 <p>The plugin was written to answer a question posted on <a href="http://stackoverflow.com/questions/10868104/can-you-have-a-javascript-hook-trigger-after-a-dom-elements-style-object-change/11004907#11004907">stack overflow</a></p>
-<h1>DEMO: </h1>
+<p>This plugin can be used to monitor the changes happening to an HTML element by some other code.</p>
+
+<h3>Example: </h3>
+
+<div class="demo-content">
+    <div title="click anywhere inside to adjust the attributes" class="demo" id="demo1" >demo 1 div</div>
+    <div title="click anywhere inside to adjust the attributes" class="demo" id="demo1">demo 2 div</div>
+    <div title="click anywhere inside to adjust the attributes" class="demo" id="demo1">demo 3 div</div>   
+</div>
+<div id="attributeChanger">
+    <h4 class="title">Attribute Changer</h4>
+    <div class="attrList"></div>
+    <div class="addAttribute text-right"><a href="javascript:void(0)" title="add new attribute">add new attribute</a></div>
+</div>
+<div id="logger">
+    <a href="javascript:void(0)" id="clearLog" class="float-right" style="margin-right: 10px; position: absolute; right:0px; top:0px; background-color: #3E6B9D; color: white; ">clear</a>
+</div>
+<div id="addOrmodifyAttr" title="Add/Modify Attribute">
+    <h4 class="title">Add/Modify Attribute</h4>
+    <p><b>Attr Name</b> <input type="text" class="float-right attrName"></p>    
+    <p><b>Attr Value</b> <input type="text" class="float-right attrValue"/></p>
+    <div class="clear">&nbsp;</div>
+    <button type="button" class="float-right close">Close</button>
+    <button type="button" class="float-right update">Update</button>
+    <div class="clear"></div>
+</div>
+
+<div id="overlay"></div>
 
 <p><a href="http://jsfiddle.net/zFVyv/10/">http://jsfiddle.net/zFVyv/10/</a></p>
-
-<h1>Reference:</h1>
+<p><a href="http://jsfiddle.net/PV8jj/12/">http://jsfiddle.net/PV8jj/12/</a></p>
+<h3>Reference:</h3>
 
 <p><a href="http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/">http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/</a>
 <a href="https://developer.mozilla.org/en/DOM/Mutation_events">https://developer.mozilla.org/en/DOM/Mutation_events</a>
