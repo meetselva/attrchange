@@ -1,17 +1,17 @@
-div.demo-content { z-index: 1; border: 1px solid #FF9B08; background-color: #F9EDB1; width: 300px;  }
+div.demo-content { z-index: 1; border: 1px solid #FF9B08; background-color: #F9EDB1; }
 div.demo-content div { border: 1px dotted #C95400; width: 100px; height: 20px; margin: 10px; padding: 5px; font-size: 0.9em; background-color: #FEFFE5; color: #574353; z-index: 1009; }
 div.demo-content div:hover { border-style: solid; }
 div.demo-content div.selected { border-style: solid; background-color: #C95400; color: white; }
 
-#attributeChanger { border: 1px solid #C95400; min-height: 50px; margin: 10px; padding: 2px; font-size: 0.8em; background-color: #FEFFE5; color: #574353; opacity: 0; position: absolute; top: -200px; z-index: -1; filter: alpha(opacity=0); z-index:0; min-width: 150px;  }
+#attributeChanger { border: 1px solid #C95400; min-height: 50px; margin: 10px; padding: 2px; font-size: 0.9em; background-color: #FEFFE5; color: #574353; opacity: 0; position: absolute; top: -200px; z-index: -1; filter: alpha(opacity=0); z-index:0; min-width: 150px;  }
 
 h4.title { font-weight: bold; background-color: #C95400; color: white; padding: 1px 3px;  }
 
 .attrList p { width: 95%; margin-top: 3px; }
-.attrList p a, .attrList p span { font-size: 0.7em; vertical-align: bottom; margin-top: 2px; }
+.attrList p a, .attrList p span { font-size: 0.9em; vertical-align: bottom; margin-top: 2px; }
 .addAttribute  { font-size: 0.7em; margin-top: 10px; }
 
-#logger { height: 200px; width: 95%; overflow: auto; border: #3E6B9D; background-color: #4169E1; color: white; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; }
+#logger { height: 200px; overflow: auto; border: #3E6B9D; background-color: #4169E1; color: white; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; }
 #logger p.even { background-color: #6179F1; }
 
 .text-right { text-align: right; }
