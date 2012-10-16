@@ -16,8 +16,8 @@ b { font-weight: bold; }
 .attrList p a, .attrList p span { font-size: 0.9em; vertical-align: bottom; margin-top: 2px; }
 .addAttribute  { font-size: 0.7em; margin-top: 10px; }
 
-#logger { height: 200px; overflow: auto; border: #3E6B9D; background-color: #4169E1; color: white; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; }
-#logger p.even { background-color: #6179F1; }
+#logger { height: 200px; overflow: auto; border: 1px solid #4169E1; background-color: #DADFFA; color: white; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; }
+#logger p.even { background-color: #6179F1; color: white; }
 
 .text-right { text-align: right; }
 .float-right { float: right; }
