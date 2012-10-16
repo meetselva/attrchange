@@ -6,7 +6,11 @@ div.demo-content div.selected { border-style: solid; background-color: #C95400; 
 #attributeChanger { border: 1px solid #C95400; min-height: 50px; margin: 10px; padding: 2px; font-size: 0.9em; background-color: #FEFFE5; color: #574353; opacity: 0; position: absolute; top: -200px; z-index: -1; filter: alpha(opacity=0); z-index:0; min-width: 150px;  }
 
 h4.title { font-weight: bold; background-color: #C95400; color: white; padding: 1px 3px; }
+
+/* overrides */
 h1, h2, h3, h4, h5, h6 { margin: 0px; }
+p { margin: 4px 0 8px; }
+/* overrides */
 
 .attrList p { width: 95%; margin-top: 3px; }
 .attrList p a, .attrList p span { font-size: 0.9em; vertical-align: bottom; margin-top: 2px; }
