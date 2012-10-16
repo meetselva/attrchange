@@ -5,12 +5,12 @@ $(function() {
     var $attributeChanger = $('#attributeChanger');
     var $attrchange = $('div', '.demo-content');
 
-    var $logger = $('#logger'),logStyler = 0;
+    var $logger = $('#logger'); //,logStyler = 0;
 
     $attrchange.attrchange(function(attrName) {
-        var rowStyle = (logStyler) ? 'odd' : 'even';
-        $logger.prepend('<p class="' + rowStyle + '">- ' + '<b>attrchange</b>' + ' handler triggered: <b>' + attrName + '</b> changed for ' + $(this).html() + '</p>');
-        logStyler = logStyler ? 0 : 1;
+        //var rowStyle = (logStyler) ? 'odd' : 'even';
+        $logger.prepend('<p>- ' + '<b>attrchange</b>' + ' handler triggered: <b>' + attrName + '</b> changed for ' + $(this).html() + '</p>');
+        //logStyler = logStyler ? 0 : 1;
     });
 
     $attrchange.click(function() {
