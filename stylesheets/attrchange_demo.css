@@ -1,7 +1,6 @@
 div.demo-content { z-index: 1; border: 1px solid #4169E1; background-color: #DADFFA; }
-div.demo-content div { border: 1px dotted #C95400; width: 100px; height: 20px; margin: 10px; padding: 5px; font-size: 0.9em; background-color: #FEFFE5; color: #574353; z-index: 1009; }
+div.demo-content div { border: 1px dotted #4169E1; width: 100px; height: 20px; margin: 10px; padding: 5px; font-size: 0.9em; background-color: #4169E1; color: white; z-index: 1009; }
 div.demo-content div:hover { border-style: solid; }
-div.demo-content div.selected { border-style: solid; background-color: #C95400; color: white; }
 
 #attributeChanger { border: 1px solid #4169E1; min-height: 50px; margin: 10px; padding: 2px; font-size: 0.9em; background-color: #FEFFFF; color: #574353; opacity: 0; position: absolute; top: -200px; z-index: -1; filter: alpha(opacity=0); z-index:0; min-width: 150px;  }
 
