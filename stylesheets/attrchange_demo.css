@@ -1,5 +1,5 @@
 /*example 1*/
-#blocks { border: 2px solid #4169E1; background-color: #DADFFA; padding: 10px; width:92px; height: 150px; margin: 5px 0px; }
+#blocks { border: 2px solid #4169E1; background-color: #DADFFA; padding: 10px; width:92px; height: 150px; }
 .block { width: 30px; height: 30px; margin: 5px; border: 1px solid #4169E1; background-color: #535353; color: white; position: relative; display: inline-block; top: 30px; }
 
 /*example 2*/
@@ -38,4 +38,5 @@ h4.title { font-weight: bold; background-color: #4169E1; color: white; padding: 
 h1, h2, h3, h4, h5, h6 { margin: 0px; }
 p { margin: 4px 0 8px; }
 b { font-weight: bold; }
+pre { font-size: 0.9em; font-style: italic; }
 /* overrides */
