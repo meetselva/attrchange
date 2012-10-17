@@ -25,7 +25,7 @@ b { font-weight: bold; }
 .strong { font-weight: bold; }
 .nbnbg { border-width: 0px; background-color: transparent; }
 .small { font-size: 0.8em; }
-.spaced { letter-spacing: 1px; color: #c3c3c3; }
+.spaced { letter-spacing: 3px; color: #c3c3c3; }
 
 #addOrmodifyAttr { font-size: 0.8em; width: 250px; border: 1px solid #4169E1; background-color: #DADFFA; padding: 5px 2px; position: absolute; display: none; z-index: 1011; top: 20%; left: 30%; }
 #addOrmodifyAttr p { margin-top: 5px; padding: 0px 5px; }
