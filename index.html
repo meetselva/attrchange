@@ -21,10 +21,12 @@
       .beta { font-size: 0.4em; color: #0077DE; }
     </style>
     
-    <script>
+    <script>    
+    $(function () {
       $('.showcode').click (function () {
         $(this).next().slideToggle();
-      });
+      });    
+    });
     </script>
     
   </head>
@@ -77,6 +79,12 @@ $(selector).attrchange(function () {
           <p>
             Included a logger div to print the changes after the attribute is updated            
           </p>
+          <div id="blocks" style="float: left; width: 400px;">
+              <div class="block" title="b1">b1</div>
+              <div class="block" title="b2">b2</div>  
+          </div>
+          <div class="logger" style="float: right; width: 200px;"></div>
+          <div clsas="clear"></div>
           <a href="javascript:void(0)" class="showcode">Show code</a>
           <div class="demo_code hidden">
           <p class="strong">HTML:</p>
@@ -93,12 +101,6 @@ $('#blocks .block').attrchange(function(attrName) {
 }); 
           </pre>
           </div>
-          <div id="blocks" style="float: left; width: 400px;">
-              <div class="block" title="b1">b1</div>
-              <div class="block" title="b2">b2</div>  
-          </div>
-          <div class="logger" style="float: right; width: 200px;"></div>
-          <div clsas="clear"></div>
         </div>
         <div class="example" id="example2">
           <h3>Example: </h3>
