@@ -79,28 +79,30 @@ $(selector).attrchange(function () {
           <p>
             Included a logger div to print the changes after the attribute is updated            
           </p>
+          <p>
+            <a href="javascript:void(0)" class="showcode">Show code</a>
+            <div class="demo_code hidden">
+            <p class="strong">HTML:</p>
+            <pre>
+&lt;div id="blocks"&gt;
+     &lt;div title="b1" class="block" style="top: 65px;"&gt;b1&lt;/div&gt;
+     &lt;div title="b2" class="block" style="top: 65px;"&gt;b2&lt;/div&gt;  
+&lt;/div&gt;
+            </pre>
+            <p class="strong">JS:</p>
+            <pre>
+$('#blocks .block').attrchange(function(attrName) {
+  $('#logger').prepend('&lt;p&gt;- attribute &lt;b&gt;' + attrName + '&lt;/b&gt; changed for &lt;b&gt;' + this.title + '&lt;/b&gt;&lt;/p&gt;');
+}); 
+            </pre>
+            </div>
+          </p>
           <div id="blocks" style="float: left; width: 400px;">
               <div class="block" title="b1">b1</div>
               <div class="block" title="b2">b2</div>  
           </div>
           <div class="logger" style="float: right; width: 200px;"></div>
-          <div clsas="clear"></div>
-          <a href="javascript:void(0)" class="showcode">Show code</a>
-          <div class="demo_code hidden">
-          <p class="strong">HTML:</p>
-          <pre>
-&lt;div id="blocks"&gt;
-     &lt;div title="b1" class="block" style="top: 65px;"&gt;b1&lt;/div&gt;
-     &lt;div title="b2" class="block" style="top: 65px;"&gt;b2&lt;/div&gt;  
-&lt;/div&gt;
-          </pre>
-          <p class="strong">JS:</p>
-          <pre>
-$('#blocks .block').attrchange(function(attrName) {
-  $('#logger').prepend('<p>- attribute <b>' + attrName + '</b> changed for <b>' + this.title + '</b></p>');
-}); 
-          </pre>
-          </div>
+          <div clsas="clear"></div>          
         </div>
         <div class="example" id="example2">
           <h3>Example: </h3>
