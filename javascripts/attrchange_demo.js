@@ -35,7 +35,7 @@ $(function() {
         $.each($blocks, function() {
            $(this).css('top', curTop);
         });
-    }, 300);
+    }, 100);
     
     var $logger1 = $('#example1 .logger');
     $blocks.attrchange(function(attrName) {      
@@ -43,7 +43,7 @@ $(function() {
     });
     
     //clear logger after 2 secs
-    setInterval(function () { $logger1.html('');  }, 3000);
+    setInterval(function () { $logger1.html('');  }, 2000);
  
    //example 2 - http://jsfiddle.net/PV8jj/12/
     var attrTmpl = '<p title="{attrName}">{attrName}<a href="javascript:void(0)" class="remove float-right" title="remove">remove</a><span class="float-right">&nbsp;|&nbsp;</span><a href="javascript:void(0)" class="modify float-right" title="modify">modify</a></p>';
