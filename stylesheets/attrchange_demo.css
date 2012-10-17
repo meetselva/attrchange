@@ -14,6 +14,7 @@ div.demo-content div:hover { border-style: solid; }
 .addAttribute  { font-size: 0.7em; margin-top: 10px; }
 
 .logger { height: 200px; overflow: auto; border: 1px solid #4169E1; background-color: #DADFFA; color: black; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; }
+.logger p { margin: 0px; }
 
 #addOrmodifyAttr { font-size: 0.8em; width: 250px; border: 1px solid #4169E1; background-color: #DADFFA; padding: 5px 2px; position: absolute; display: none; z-index: 1011; top: 20%; left: 30%; }
 #addOrmodifyAttr p { margin-top: 5px; padding: 0px 5px; }
