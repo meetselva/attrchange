@@ -43,9 +43,7 @@ $(function() {
     });
     
     //clear logger after 2 secs
-    setInterval(function () {
-       $logger.html('');
-    }, 3000);
+    setInterval(function () { $logger1.html('');  }, 3000);
  
    //example 2 - http://jsfiddle.net/PV8jj/12/
     var attrTmpl = '<p title="{attrName}">{attrName}<a href="javascript:void(0)" class="remove float-right" title="remove">remove</a><span class="float-right">&nbsp;|&nbsp;</span><a href="javascript:void(0)" class="modify float-right" title="modify">modify</a></p>';
