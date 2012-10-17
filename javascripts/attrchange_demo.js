@@ -23,7 +23,7 @@ $(function() {
    //example 1 - http://jsfiddle.net/GwBhW/
    var dir = 1, $blocks = $('#blocks .block'), curTop = 30;
     
-    setInterval(function() {
+   setInterval(function() {
         if (dir == 1) {
            curTop += 5;
            if (curTop > 75) dir = -1;
@@ -37,7 +37,7 @@ $(function() {
         });
     }, 300);
     
-    var $logger = $('#example1 logger');
+    var $logger = $('#example1 .logger');
     $blocks.attrchange(function(attrName) {      
         $logger.prepend('<p>- attribute <b>' + attrName + '</b> changed for <b>' + this.title + '</b></p>');       
     });
@@ -53,7 +53,7 @@ $(function() {
     var $attributeChanger = $('#attributeChanger');
     var $attrchange = $('div', '.demo-content');
 
-    var $logger = $('#example2 logger'); //,logStyler = 0;
+    var $logger = $('#example2 .logger'); //,logStyler = 0;
 
     $attrchange.attrchange(function(attrName) {
         //var rowStyle = (logStyler) ? 'odd' : 'even';
