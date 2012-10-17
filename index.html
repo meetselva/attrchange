@@ -21,6 +21,12 @@
       .beta { font-size: 0.4em; color: #0077DE; }
     </style>
     
+    <script>
+      $('.showcode').click (function () {
+        $(this).next().slideToggle();
+      });
+    </script>
+    
   </head>
 
   <body>
@@ -64,7 +70,29 @@ $(selector).attrchange(function () {
 
         <div class="example" id="example1">
           <h3>Example: </h3>
-
+          <p>
+            A simple example to demonstrate the execution of the onattrchange handler function when updating 
+            style attribute. 
+          </p>
+          <p>
+            Included a logger div to print the changes after the attribute is updated            
+          </p>
+          <a href="javascript:void(0)" class="showcode">Show code</a>
+          <div class="demo_code hidden">
+          <p class="strong">HTML:</p>
+          <pre>
+&lt;div id="blocks"&gt;
+     &lt;div title="b1" class="block" style="top: 65px;"&gt;b1&lt;/div&gt;
+     &lt;div title="b2" class="block" style="top: 65px;"&gt;b2&lt;/div&gt;  
+&lt;/div&gt;
+          </pre>
+          <p class="strong">JS:</p>
+          <pre>
+$('#blocks .block').attrchange(function(attrName) {
+  $('#logger').prepend('<p>- attribute <b>' + attrName + '</b> changed for <b>' + this.title + '</b></p>');
+}); 
+          </pre>
+          </div>
           <div id="blocks" style="float: left; width: 400px;">
               <div class="block" title="b1">b1</div>
               <div class="block" title="b2">b2</div>  
