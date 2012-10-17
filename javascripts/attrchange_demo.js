@@ -25,7 +25,7 @@ $(function() {
     var $attributeChanger = $('#attributeChanger');
     var $attrchange = $('div', '.demo-content');
 
-    var $logger = $('#logger'); //,logStyler = 0;
+    var $logger = $('#example2 logger'); //,logStyler = 0;
 
     $attrchange.attrchange(function(attrName) {
         //var rowStyle = (logStyler) ? 'odd' : 'even';
