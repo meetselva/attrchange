@@ -20,6 +20,34 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 $(function() {
 
+   //example 1 - http://jsfiddle.net/GwBhW/
+   var dir = 1, $blocks = $('#blocks .block'), curTop = 30;
+    
+    setInterval(function() {
+        if (dir == 1) {
+           curTop += 5;
+           if (curTop > 75) dir = -1;
+        } else {
+           curTop -= 5;
+           if (curTop <= 30) dir = 1;
+        }        
+
+        $.each($blocks, function() {
+           $(this).css('top', curTop);
+        });
+    }, 300);
+    
+    var $logger = $('#example1 logger');
+    $blocks.attrchange(function(attrName) {      
+        $logger.prepend('<p>- attribute <b>' + attrName + '</b> changed for <b>' + this.title + '</b></p>');       
+    });
+    
+    //clear logger after 2 secs
+    setInterval(function () {
+       $logger.html('');
+    }, 3000);
+ 
+   //example 2 - http://jsfiddle.net/PV8jj/12/
     var attrTmpl = '<p title="{attrName}">{attrName}<a href="javascript:void(0)" class="remove float-right" title="remove">remove</a><span class="float-right">&nbsp;|&nbsp;</span><a href="javascript:void(0)" class="modify float-right" title="modify">modify</a></p>';
 
     var $attributeChanger = $('#attributeChanger');
