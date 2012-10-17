@@ -1,5 +1,5 @@
 /*example 1*/
-#blocks { border: 2px solid #4169E1; background-color: #DADFFA; padding: 10px; width:92px; height: 150px; }
+#blocks { border: 2px solid #4169E1; background-color: #DADFFA; padding: 10px; width:92px; height: 150px; margin: 5px 0px; }
 .block { width: 30px; height: 30px; margin: 5px; border: 1px solid #4169E1; background-color: #535353; color: white; position: relative; display: inline-block; top: 30px; }
 
 /*example 2*/
