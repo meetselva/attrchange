@@ -39,7 +39,7 @@ h4.title { font-weight: bold; background-color: #4169E1; color: white; padding: 
 h1, h2, h3, h4, h5, h6 { margin: 0px; }
 p { margin: 4px 0 8px; }
 b { font-weight: bold; }
-pre { font-size: 0.7em; font-style: italic; }
+pre { font-size: 0.7em; }
 
 #example1 .logger { height: 172px; }
 /* overrides */
