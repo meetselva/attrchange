@@ -64,11 +64,9 @@
         src="https://raw.github.com/meetselva/attrchange/master/attrchange.js"&gt;&lt;/script&gt;</pre>
         </li>
         <li>Bind attrchange handler function to selected elements
-        <pre>
-$(selector).attrchange(function () {
+        <pre>$(selector).attrchange(function () {
     //Triggered when the selected elements attribute is added/updated/removed
-});
-        </pre>
+});</pre>
         </li>
 		</ul>
 		<h2>Example: </h2>
@@ -190,6 +188,16 @@ $('.demo-content').attrchange(function(e, attrName) {
           </div>
         </div>
         
+        <h2>Download</h2>
+        <p><a class="" href="https://github.com/meetselva/attrchange/zipball/master">Download as a .zip file</a></p>
+        <p><a class="" href="https://github.com/meetselva/attrchange/tarball/master">Download as a tar.gz file</a></p>
+                
+        <h2>Browser Compatibility<span class="small">**</span></h2>
+        <p><b>DOMAttrModified</b>     - Supported in IE 9, FF and Opera</p>        
+        <p><b>MutationObservers</b>   - is very new and it is supported in FF and Chrome 18.  </p>        
+        <p><b>onpropertychange</b>    - All versions of IE</p>
+        <p class="small">** yet to tested in complex scenarios</p>
+        
         <h2>What features gonna be there in next release?</h2>
         <ul>
         	<li>Monitor specific attribute change</li>
@@ -211,13 +219,6 @@ $('.demo-content').attrchange(function(e, attrName) {
         <a href="https://developer.mozilla.org/en/DOM/DOM_Mutation_Observers">https://developer.mozilla.org/en/DOM/DOM_Mutation_Observers</a>
         <a href="http://msdn.microsoft.com/en-us/library/ie/ms536956%28v=vs.85%29.aspx">http://msdn.microsoft.com/en-us/library/ie/ms536956%28v=vs.85%29.aspx</a></p>
         
-        <h1>Browser Support Information:</h1>
-        
-        <p><code>DOMAttrModified</code>     - Supported in IE 9, FF and Opera</p>
-        
-        <p><code>MutationObservers</code>   - is very new and it is supported in FF and Chrome 18.  </p>
-        
-        <p><code>onpropertychange</code>    - Only in IE</p>
         </div>
       </div>
     </div>
