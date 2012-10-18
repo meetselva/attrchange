@@ -1,9 +1,9 @@
 /*example 1*/
-#blocks { border: 2px solid #4169E1; background-color: #DADFFA; padding: 10px; width:92px; height: 150px; }
+#blocks { border: 2px solid #4169E1; background-color: #DADFFA; padding: 10px; width:92px; height: 150px; float: left; width: 280px; }
 .block { width: 30px; height: 30px; margin: 5px; border: 1px solid #4169E1; background-color: #535353; color: white; position: relative; display: inline-block; top: 30px; padding-left: 5px; }
 
 /*example 2*/
-div.demo-content { z-index: 1; border: 1px solid #4169E1; background-color: #DADFFA; }
+div.demo-content { z-index: 1; border: 2px solid #4169E1; background-color: #DADFFA; float: left; width: 300px; }
 div.demo-content div { border: 1px dotted #4169E1; width: 100px; height: 20px; margin: 10px; padding: 5px; font-size: 0.9em; background-color: #4169E1; color: white; z-index: 1009; }
 div.demo-content div:hover { border-style: solid; }
 
@@ -13,7 +13,7 @@ div.demo-content div:hover { border-style: solid; }
 .attrList p a, .attrList p span { font-size: 0.9em; vertical-align: bottom; margin-top: 2px; }
 .addAttribute  { font-size: 0.7em; margin-top: 10px; }
 
-.logger { height: 200px; overflow: auto; border: 1px solid #4169E1; background-color: #DADFFA; color: black; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; }
+.logger { height: 200px; overflow: auto; border: 1px solid #4169E1; background-color: #DADFFA; color: black; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; float: right; width: 320px;}
 .logger p { margin: 0px; }
 
 #addOrmodifyAttr { font-size: 0.8em; width: 250px; border: 1px solid #4169E1; background-color: #DADFFA; padding: 5px 2px; position: fixed; display: none; z-index: 1011; top: 30%; left: 40%; }
@@ -37,9 +37,10 @@ h4.title { font-weight: bold; background-color: #4169E1; color: white; padding: 
 
 /* overrides */
 h1, h2, h3, h4, h5, h6 { margin: 0px; }
-p { margin: 4px 0 8px; }
+p { margin: 4px 0 8px; line-height: 1.2em; }
 b { font-weight: bold; }
 pre { font-size: 0.7em; }
 
+.example { margin-top: 10px; }
 #example1 .logger { height: 172px; }
 /* overrides */

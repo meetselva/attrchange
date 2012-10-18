@@ -14,7 +14,7 @@
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js" type="text/javascript"></script>
     <script src="javascripts/attrchange_demo.js" type="text/javascript"></script>
 
-    <title>Attrchange</title>
+    <title>onattrchange - A jQuery plugin</title>
     
     <style>
       .strong { font-weight: bold; }
@@ -59,28 +59,31 @@
         <h2>Basic Usage</h2>
         Start using this plugin by following 2 simple steps.
         <p>
-        Include <a href="https://raw.github.com/meetselva/attrchange/master/attrchange.js" >attrchange.js</a> to your web page
-        <pre>&lt;script src="https://raw.github.com/meetselva/attrchange/master/attrchange.js" type="text/javascript"&gt;&lt;/script&gt;</pre>
+        - Include <a href="https://raw.github.com/meetselva/attrchange/master/attrchange.js" >attrchange.js</a> to your web page
+        <pre>&lt;script type="text/javascript"
+        src="https://raw.github.com/meetselva/attrchange/master/attrchange.js"&gt;&lt;/script&gt;</pre>
         </p>
-        <p>Bind attrchange handler function to selected elements
+        <p>
+        - Bind attrchange handler function to selected elements
         <pre>
 $(selector).attrchange(function () {
-    //What you want to do when the selected elements attribute is added/updated/removed
+    //Triggered when the selected elements attribute is added/updated/removed
 });
         </pre>
         </p>
-
+		
+		<h2>Example: </h2>
         <div class="example" id="example1">
-          <h3>Example: </h3>
           <p>
-            A simple example to demonstrate the execution of the onattrchange handler function when updating 
-            style attribute. 
+            <b>Example 1:</b> A simple example to demonstrate the execution of the onattrchange handler function. 
           </p>
           <p>
-            Included a logger div to print the changes after the attribute is updated            
-          </p>
+          	In the demo, each block's top position is increased/decreased by 5px every second which 
+          	triggers the attrchange handler. Inside the handler is a simple logger which displays the name of 
+          	the attribute along with the block number. 
+          </p>         
           <div>
-            <a href="javascript:void(0)" class="showcode">Show code</a>
+            <a href="javascript:void(0)" class="showcode strong">View code</a>
             <div class="demo_code" style="display: none;">
             <b>HTML:</b>
             <pre>
@@ -92,37 +95,48 @@ $(selector).attrchange(function () {
             <b>JS:</b>
             <pre>
 $('#blocks .block').attrchange(function(e, attrName) {
-  $('#logger').prepend('&lt;p&gt;- attribute &lt;b&gt;' + attrName + '&lt;/b&gt; changed for &lt;b&gt;' + this.title + '&lt;/b&gt;&lt;/p&gt;');
+  $('#logger').prepend('&lt;p&gt;- attribute &lt;b&gt;' + attrName + '&lt;/b&gt; changed for &lt;b&gt;' + 
+  		        this.title + '&lt;/b&gt;&lt;/p&gt;');
 }); 
             </pre>
             </div>
           </div>
           <hr />
-          <div id="blocks" style="float: left; width: 400px;">
+          <div id="blocks">
               <div class="block" title="b1">b1</div>
               <div class="block" title="b2">b2</div>  
-              <div class="block" title="b2">b3</div>
-              <div class="block" title="b2">b4</div>
-              <div class="block" title="b2">b5</div>
+              <div class="block" title="b3">b3</div>
+              <div class="block" title="b4">b4</div>
+              <div class="block" title="b5">b5</div>
           </div>
-          <div class="logger" style="float: right; width: 200px;"></div>
-          <div clsas="clear"></div>          
+          <div class="logger"></div>
+          <div clsas="clear"></div>
+          <p class="text-right small note"><b>Note:</b> logger is cleared every 10 seconds</p>
         </div>
-        <div class="example" id="example2">
-          <h3>Example: </h3>
-          
+        <hr/>
+        <div class="example" id="example2">          
+	      <p>
+	         <b>Example 2:</b> An interactive demo to show the execution of the onattrchange handler function. 
+	      </p>
+	      <p>
+	      
+	      </p>
           <div class="demo-content">
               <div title="click anywhere inside to adjust the attributes" class="demo" id="demo1" >demo 1 div</div>
-              <div title="click anywhere inside to adjust the attributes" class="demo" id="demo1">demo 2 div</div>
-              <div title="click anywhere inside to adjust the attributes" class="demo" id="demo1">demo 3 div</div>
+              <div title="click anywhere inside to adjust the attributes" class="demo" id="demo2">demo 2 div</div>
+              <div title="click anywhere inside to adjust the attributes" class="demo" id="demo3">demo 3 div</div>
+              <div title="click anywhere inside to adjust the attributes" class="demo" id="demo4">demo 4 div</div>
+              <div title="click anywhere inside to adjust the attributes" class="demo" id="demo5">demo 5 div</div>
           </div>
-          <p>Logger:</p>
-          <div class="logger">
+          <div class="logger" style="height: 210px;">
             <!-- a href="javascript:void(0)" id="clearLog" class="float-right" style="margin-right: 10px; position: absolute; right:0px; top:0px; background-color: #3E6B9D; color: white; ">clear</a -->
           </div>
+          <div clsas="clear"></div>
+          <p class="text-right small note"><b>Note:</b> logger is cleared every 10 seconds</p>
           
           <div id="attributeChanger">
               <h4 class="title">Attribute Changer</h4>
+              <p>Listed below are the attributes of the div:</p> 
               <div class="attrList"></div>
               <div class="addAttribute text-right"><a href="javascript:void(0)" title="add new attribute">add new attribute</a></div>
           </div>
@@ -136,11 +150,13 @@ $('#blocks .block').attrchange(function(e, attrName) {
               <button type="button" class="float-right update">Update</button>
               <div class="clear"></div>
           </div>
-        </div>        
+        </div>
         <div id="overlay"></div>
         
-        <p><a href="http://jsfiddle.net/zFVyv/10/">http://jsfiddle.net/zFVyv/10/</a></p>
-        <p><a href="http://jsfiddle.net/PV8jj/12/">http://jsfiddle.net/PV8jj/12/</a></p>
+        <p class="hidden"><a href="http://jsfiddle.net/zFVyv/10/">http://jsfiddle.net/zFVyv/10/</a></p>
+        <p class="hidden"><a href="http://jsfiddle.net/PV8jj/12/">http://jsfiddle.net/PV8jj/12/</a></p>
+        
+        <div class="clear"></div>
         <h3>Reference:</h3>
         
         <p><a href="http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/">http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/</a>

@@ -39,11 +39,11 @@ $(function() {
     
     var $logger1 = $('#example1 .logger');
     $blocks.attrchange(function(e, attrName) {      
-        $logger1.prepend('<p>- attribute <b>' + attrName + '</b> changed for <b>' + this.title + '</b></p>');       
+        $logger1.append('<p>- attribute <b>' + attrName + '</b> changed for <b>' + this.title + '</b></p>');       
     });
     
     //clear logger after 2 secs
-    setInterval(function () { $logger1.html('');  }, 2000);
+    setInterval(function () { $logger1.html('');  }, 10000);
  
    //example 2 - http://jsfiddle.net/PV8jj/12/
     var attrTmpl = '<p title="{attrName}">{attrName}<a href="javascript:void(0)" class="remove float-right" title="remove">remove</a><span class="float-right">&nbsp;|&nbsp;</span><a href="javascript:void(0)" class="modify float-right" title="modify">modify</a></p>';
