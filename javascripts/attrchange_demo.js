@@ -38,7 +38,7 @@ $(function() {
     }, 100);
     
     var $logger1 = $('#example1 .logger');
-    $blocks.attrchange(function(attrName) {      
+    $blocks.attrchange(function(e, attrName) {      
         $logger1.prepend('<p>- attribute <b>' + attrName + '</b> changed for <b>' + this.title + '</b></p>');       
     });
     
@@ -53,7 +53,7 @@ $(function() {
 
     var $logger2 = $('#example2 .logger'); //,logStyler = 0;
 
-    $attrchange.attrchange(function(attrName) {
+    $attrchange.attrchange(function(e, attrName) {
         //var rowStyle = (logStyler) ? 'odd' : 'even';
         $logger2.prepend('<p>- ' + '<b>attrchange</b>' + ' handler triggered: <b>' + attrName + '</b> changed for ' + $(this).html() + '</p>');
         //logStyler = logStyler ? 0 : 1;
