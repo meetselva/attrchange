@@ -1,11 +1,11 @@
 attrchange
 ==========
 
-A simple jQuery function to add listener on attribute change. 
+attrchange is a simple jQuery function to bind a listener function to any HTML element on attribute change. 
 
-DEMO: 
-=====
-http://jsfiddle.net/zFVyv/10/
+DEMOS & DOCUMENTATION: 
+======================
+http://meetselva.github.com/attrchange/
 
 Reference:
 ==========
