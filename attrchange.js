@@ -50,7 +50,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 
 		var observer = new MutationObserver(function(mutations) {
 			mutations.forEach(function(e) {
-				callback.call(e.target, e.attributeName);
+				callback.call(e.target, e, e.attributeName);
 			});
 		});
 
@@ -61,12 +61,12 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 		//Good old Mutation Events but the performance is mm not so appealing
 		//http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/
 		return this.on('DOMAttrModified', function(e) {
-			callback.call(this, e.attrName);
+			callback.call(this, e, e.attrName);
 		});
 	} else if ('onpropertychange' in document.body) {
 		//works only in IE
 		return this.on('propertychange', function(e) {
-			callback.call(this, window.event.propertyName);
+			callback.call(this, e, window.event.propertyName);
 		});
 	}
    }
