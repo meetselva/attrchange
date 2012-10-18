@@ -35,7 +35,7 @@ $(function() {
         $.each($blocks, function() {
            $(this).css('top', curTop);
         });
-    }, 100);
+    }, 1000);
     
     var $logger1 = $('#example1 .logger');
     $blocks.attrchange(function(e, attrName) {      

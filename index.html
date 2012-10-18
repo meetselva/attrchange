@@ -91,7 +91,7 @@ $(selector).attrchange(function () {
             </pre>
             <b>JS:</b>
             <pre>
-$('#blocks .block').attrchange(function(attrName) {
+$('#blocks .block').attrchange(function(e, attrName) {
   $('#logger').prepend('&lt;p&gt;- attribute &lt;b&gt;' + attrName + '&lt;/b&gt; changed for &lt;b&gt;' + this.title + '&lt;/b&gt;&lt;/p&gt;');
 }); 
             </pre>
@@ -101,6 +101,9 @@ $('#blocks .block').attrchange(function(attrName) {
           <div id="blocks" style="float: left; width: 400px;">
               <div class="block" title="b1">b1</div>
               <div class="block" title="b2">b2</div>  
+              <div class="block" title="b2">b3</div>
+              <div class="block" title="b2">b4</div>
+              <div class="block" title="b2">b5</div>
           </div>
           <div class="logger" style="float: right; width: 200px;"></div>
           <div clsas="clear"></div>          
