@@ -52,7 +52,7 @@
       <section id="main_content" class="inner">
         <h2>Overview</h2>
 
-        <p><a class="strong" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js">attrchange</a> is a simple jQuery function to add listener function to any HTML element on attribute change. </p>        
+        <p><a class="strong" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js">attrchange</a> is a simple jQuery function to bind a listener function to any HTML element on attribute change. </p>        
         <p>This plugin can be used to monitor the changes happening to a HTML element by some other code.</p>
         <p>The plugin was originally written to answer a question posted on <a href="http://stackoverflow.com/questions/10868104/can-you-have-a-javascript-hook-trigger-after-a-dom-elements-style-object-change/11004907#11004907">stack overflow</a></p>
 
@@ -95,7 +95,7 @@ $(selector).attrchange(function () {
             <b>JS:</b>
             <pre>
 $('#blocks .block').attrchange(function(e, attrName) {
-  $('#logger').prepend('&lt;p&gt;- attribute &lt;b&gt;' + attrName + '&lt;/b&gt; changed for &lt;b&gt;' + 
+  $('#example1 .logger').prepend('&lt;p&gt;- attribute &lt;b&gt;' + attrName + '&lt;/b&gt; changed for &lt;b&gt;' + 
   		        this.title + '&lt;/b&gt;&lt;/p&gt;');
 }); 
             </pre>
@@ -119,20 +119,59 @@ $('#blocks .block').attrchange(function(e, attrName) {
 	         <b>Example 2:</b> An interactive demo to show the execution of the onattrchange handler function. 
 	      </p>
 	      <p>
-	      
+	      The interactive demo allows you to add/update/remove attributes on the demo div elements. Click on the 
+	      demo div to pop the Attribute Changer dialog, using which you can add/update the attributes of the selected
+	      div. 	      
 	      </p>
+	      <p>
+	      Upon each update the handler function will be triggered and In this example the handler function simply prints
+	      the attribute name and the div id in the logger.
+	      </p>
+          <div>
+            <a href="javascript:void(0)" class="showcode strong">View code</a>
+            <div class="demo_code" style="display: none;">
+            <b>HTML:</b>
+            <pre>
+&lt;div class="demo-content"&gt;
+    &lt;div title="click to add/update/remove attributes" class="demo" id="demo1"&gt;
+       demo 1 div
+    &lt;/div&gt;
+    &lt;div title="click to add/update/remove attributes" class="demo" id="demo2"&gt;
+       demo 2 div
+    &lt;/div&gt;
+    &lt;div title="click to add/update/remove attributes" class="demo" id="demo3"&gt;
+       demo 3 div
+    &lt;/div&gt;
+    &lt;div title="click to add/update/remove attributes" class="demo" id="demo4"&gt;
+       demo 4 div
+    &lt;/div&gt;
+    &lt;div title="click to add/update/remove attributes" class="demo" id="demo5"&gt;
+       demo 5 div
+    &lt;/div&gt;
+&lt;/div&gt;
+            </pre>
+            <b>JS:</b>
+            <pre>
+$('.demo-content').attrchange(function(e, attrName) {    
+    $logger2.prepend('&lt;p&gt;- attribute &lt;b&gt;' + attrName + '&lt;/b&gt; changed for ' + 
+       $(this).html() + '&lt;/p&gt;');
+});
+            </pre>
+            </div>
+          </div>
+          <hr />	      
           <div class="demo-content">
-              <div title="click anywhere inside to adjust the attributes" class="demo" id="demo1" >demo 1 div</div>
-              <div title="click anywhere inside to adjust the attributes" class="demo" id="demo2">demo 2 div</div>
-              <div title="click anywhere inside to adjust the attributes" class="demo" id="demo3">demo 3 div</div>
-              <div title="click anywhere inside to adjust the attributes" class="demo" id="demo4">demo 4 div</div>
-              <div title="click anywhere inside to adjust the attributes" class="demo" id="demo5">demo 5 div</div>
+              <div title="click to add/update/remove the attributes" class="demo" id="demo1">demo 1 div</div>
+              <div title="click to add/update/remove the attributes" class="demo" id="demo2">demo 2 div</div>
+              <div title="click to add/update/remove the attributes" class="demo" id="demo3">demo 3 div</div>
+              <div title="click to add/update/remove the attributes" class="demo" id="demo4">demo 4 div</div>
+              <div title="click to add/update/remove the attributes" class="demo" id="demo5">demo 5 div</div>
           </div>
           <div class="logger" style="height: 210px;">
             <!-- a href="javascript:void(0)" id="clearLog" class="float-right" style="margin-right: 10px; position: absolute; right:0px; top:0px; background-color: #3E6B9D; color: white; ">clear</a -->
           </div>
           <div clsas="clear"></div>
-          <p class="text-right small note"><b>Note:</b> logger is cleared every 10 seconds</p>
+          <p class="text-right small note"><b>Note:</b> logger to show the execution of the handler function</p>
           
           <div id="attributeChanger">
               <h4 class="title">Attribute Changer</h4>
@@ -157,6 +196,7 @@ $('#blocks .block').attrchange(function(e, attrName) {
         <p class="hidden"><a href="http://jsfiddle.net/PV8jj/12/">http://jsfiddle.net/PV8jj/12/</a></p>
         
         <div class="clear"></div>
+        <div class="hidden">
         <h3>Reference:</h3>
         
         <p><a href="http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/">http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/</a>
@@ -171,6 +211,7 @@ $('#blocks .block').attrchange(function(e, attrName) {
         <p><code>MutationObservers</code>   - is very new and it is supported in FF and Chrome 18.  </p>
         
         <p><code>onpropertychange</code>    - Only in IE</p>
+        </div>
       </section>
     </div>
 

@@ -55,7 +55,7 @@ $(function() {
 
     $attrchange.attrchange(function(e, attrName) {
         //var rowStyle = (logStyler) ? 'odd' : 'even';
-        $logger2.prepend('<p>- ' + '<b>attrchange</b>' + ' handler triggered: <b>' + attrName + '</b> changed for ' + $(this).html() + '</p>');
+        $logger2.prepend('<p>- attribute <b>' + attrName + '</b> changed for ' + $(this).html() + '</p>');
         //logStyler = logStyler ? 0 : 1;
     });
 
