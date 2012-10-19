@@ -24,6 +24,9 @@
     <script>    
     $(function () {
       $('.showcode').click (function () {
+      	$(this).text(function (i, v) {
+      	    return (v == 'Show code')?'Hide code':'Show code'
+      	});
         $(this).next().slideToggle();
       });    
     });
@@ -52,24 +55,22 @@
       <div id="main_content" class="inner">
         <h2>Overview</h2>
 
-        <p><a class="strong" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js">attrchange</a> is a simple jQuery function to bind a listener function to any HTML element on attribute change. </p>        
+        <p><a class="strong external" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js" target="_new" >attrchange</a> is a simple jQuery function to bind a listener function on attribute change of a HTML element. </p>        
         <p>This plugin can be used to monitor the changes happening to a HTML element by some other code.</p>
-        <p>The plugin was originally written to answer a question posted on <a href="http://stackoverflow.com/questions/10868104/can-you-have-a-javascript-hook-trigger-after-a-dom-elements-style-object-change/11004907#11004907">stack overflow</a></p>
+        <p>This was originally an answer to a question posted on <a href="http://stackoverflow.com/questions/10868104/can-you-have-a-javascript-hook-trigger-after-a-dom-elements-style-object-change/11004907#11004907">stack overflow</a></p>
 
-        <h2>Basic Usage</h2>
-        Start using this plugin by following 2 simple steps.
-        <ul>
-        <li>Include <a href="https://raw.github.com/meetselva/attrchange/master/attrchange.js" >attrchange.js</a> to your web page
-        <pre>&lt;script type="text/javascript"
+        <h2>Basic Usage</h2>        
+        <p>To use the function, include <a href="http://code.jquery.com/" target="_new" class="external">jQuery library</a> and <a href="https://github.com/meetselva/attrchange/blob/master/attrchange.js">attrchange</a> plugin.
+        <pre>&lt;script type="text/javascript" src="http://code.jquery.com/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript"
         src="https://raw.github.com/meetselva/attrchange/master/attrchange.js"&gt;&lt;/script&gt;</pre>
-        </li>
-        <li>Bind attrchange handler function to selected elements
+        </p>
+        <p>Bind attrchange handler function to selected elements
         <pre>$(selector).attrchange(function () {
     //Triggered when the selected elements attribute is added/updated/removed
 });</pre>
-        </li>
-		</ul>
-		<h2>Example: </h2>
+        </p>
+		<h2>Examples: </h2>
         <div class="example" id="example1">
           <p>
             <b>Example 1:</b> A simple example to demonstrate the execution of the onattrchange handler function. 
@@ -80,7 +81,7 @@
           	the attribute along with the block number. 
           </p>         
           <div>
-            <a href="javascript:void(0)" class="showcode strong">View code</a>
+            <a href="javascript:void(0)" class="showcode strong">Show code</a>
             <div class="demo_code" style="display: none;">
             <b>HTML:</b>
             <pre>
@@ -125,7 +126,7 @@ $('#blocks .block').attrchange(function(e, attrName) {
 	      the attribute name and the div id in the logger.
 	      </p>
           <div>
-            <a href="javascript:void(0)" class="showcode strong">View code</a>
+            <a href="javascript:void(0)" class="showcode strong">Show code</a>
             <div class="demo_code" style="display: none;">
             <b>HTML:</b>
             <pre>
@@ -192,11 +193,12 @@ $('.demo-content').attrchange(function(e, attrName) {
         <p><a class="" href="https://github.com/meetselva/attrchange/zipball/master">Download as a .zip file</a></p>
         <p><a class="" href="https://github.com/meetselva/attrchange/tarball/master">Download as a tar.gz file</a></p>
                 
-        <h2>Browser Compatibility<span class="small">**</span></h2>
-        <p><b>DOMAttrModified</b>     - Supported in IE 9, FF and Opera</p>        
+        <h2>Browser Compatibility</h2>
+        <p>Tested in IE 9, FF, Chrome and Opera</p>
+        <!--p><b>DOMAttrModified</b>Tested in IE 9, FF, Chrome and Opera</p>        
         <p><b>MutationObservers</b>   - is very new and it is supported in FF and Chrome 18.  </p>        
         <p><b>onpropertychange</b>    - All versions of IE</p>
-        <p class="small">** yet to tested in complex scenarios</p>
+        <p class="small">** yet to test complex scenarios</p> -->
         
         <h2>What is in Next Release?</h2>
         <ul>
@@ -226,7 +228,7 @@ $('.demo-content').attrchange(function(e, attrName) {
     <!-- FOOTER  -->
     <div id="footer_wrap" class="outer">
       <footer class="inner text-right">
-        <p class="copyright">attrchange maintained by <a href="https://github.com/meetselva">Selvakumar Arumugam</a></p>
+        <p class="copyright">Maintained by <a href="https://github.com/meetselva">Selvakumar Arumugam</a></p>
         <p class="hidden">Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
