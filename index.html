@@ -55,11 +55,11 @@
       <div id="main_content" class="inner">
         <h2>Overview</h2>
 
-        <p><a class="strong external" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js" target="_new" >attrchange</a> is a simple jQuery function to bind a listener function on attribute change of a HTML element. </p>        
-        <p>This plugin can be used to monitor the changes happening to a HTML element by some other code.</p>
-        <p>This was originally an answer to a question posted on <a href="http://stackoverflow.com/questions/10868104/can-you-have-a-javascript-hook-trigger-after-a-dom-elements-style-object-change/11004907#11004907">stack overflow</a></p>
+        <p><a class="strong external" href="https://github.com/meetselva/attrchange/blob/master/attrchange.js" target="_new" >attrchange</a> is a simple jQuery function to bind a listener function on attribute change of an element. </p>        
+        <p>The handler function is triggered when any attribute such as id, class, style, e.t.c is added or updated or modified to the element.</p>
+        <p>This original idea is from an a question posted on <a href="http://stackoverflow.com/questions/10868104/can-you-have-a-javascript-hook-trigger-after-a-dom-elements-style-object-change/11004907#11004907">stack overflow</a></p>
 
-        <h2>Basic Usage</h2>        
+        <h2>Usage</h2>
         <p>To use the function, include <a href="http://code.jquery.com/" target="_new" class="external">jQuery library</a> and <a href="https://github.com/meetselva/attrchange/blob/master/attrchange.js">attrchange</a> plugin.
         <pre>&lt;script type="text/javascript" src="http://code.jquery.com/jquery.min.js"&gt;&lt;/script&gt;
 &lt;script type="text/javascript"
@@ -86,8 +86,11 @@
             <b>HTML:</b>
             <pre>
 &lt;div id="blocks"&gt;
-     &lt;div title="b1" class="block" style="top: 65px;"&gt;b1&lt;/div&gt;
-     &lt;div title="b2" class="block" style="top: 65px;"&gt;b2&lt;/div&gt;  
+     &lt;div title="b1" class="block" &gt;b1&lt;/div&gt;
+     &lt;div title="b2" class="block" &gt;b2&lt;/div&gt;
+     &lt;div title="b3" class="block" &gt;b2&lt;/div&gt;
+     &lt;div title="b4" class="block" &gt;b2&lt;/div&gt;
+     &lt;div title="b5" class="block" &gt;b2&lt;/div&gt;  
 &lt;/div&gt;
             </pre>
             <b>JS:</b>
@@ -194,7 +197,12 @@ $('.demo-content').attrchange(function(e, attrName) {
         <p><a class="" href="https://github.com/meetselva/attrchange/tarball/master">Download as a tar.gz file</a></p>
                 
         <h2>Browser Compatibility</h2>
-        <p>Tested in IE 9, FF, Chrome and Opera</p>
+        <p>This plugin has been successfully tested in the following browsers:</p>
+        <ul>
+        	<li>IE6+</li>
+        	<li>FF</li>
+        	<li>Chrome</li>
+        </ul>
         <!--p><b>DOMAttrModified</b>Tested in IE 9, FF, Chrome and Opera</p>        
         <p><b>MutationObservers</b>   - is very new and it is supported in FF and Chrome 18.  </p>        
         <p><b>onpropertychange</b>    - All versions of IE</p>
