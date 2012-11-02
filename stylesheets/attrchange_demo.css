@@ -26,6 +26,7 @@ div.demo-content div:hover { border-style: solid; }
 /* generic common styles */
 .text-right { text-align: right; }
 .float-right { float: right; }
+.float-left {  float: left; } 
 .clear { clear: both; }
 .strong { font-weight: bold; }
 .nbnbg { border-width: 0px; background-color: transparent; }
@@ -44,3 +45,5 @@ pre { font-size: 0.7em; }
 .example { margin-top: 10px; }
 #example1 .logger { height: 172px; }
 /* overrides */
+
+#flair { z-index: 1001; }
