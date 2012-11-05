@@ -45,7 +45,8 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 	if (MutationObserver) {
 		var options = {
 			subtree: false,
-			attributes: true
+			attributes: true,
+			attributeOldValue: true			
 		};
 
 		var observer = new MutationObserver(function(mutations) {
@@ -58,10 +59,10 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
 			observer.observe(this, options);
 		});
 	} else if (isDOMAttrModifiedSupported()) {
-		//Good old Mutation Events but the performance is mm not so appealing
+		//Good old Mutation Events but the performance is no good
 		//http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/
 		return this.on('DOMAttrModified', function(e) {
-			callback.call(this, e, e.attrName);
+			callback.call(this, e);
 		});
 	} else if ('onpropertychange' in document.body) {
 		//works only in IE
