@@ -37,38 +37,39 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
    //initialize Mutation Observer
    var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 
-   $.fn.attrchange = function(callback) {
-	/*
-	   Mutation Observer is still new and not supported by all browsers. 
-	   http://lists.w3.org/Archives/Public/public-webapps/2011JulSep/1622.html
-	*/
-	if (MutationObserver) {
-		var options = {
-			subtree: false,
-			attributes: true,
-			attributeOldValue: true			
-		};
-
-		var observer = new MutationObserver(function(mutations) {
-			mutations.forEach(function(e) {
-				callback.call(e.target, e, e.attributeName);
+   $.fn.attrchange = function(callback) {	  
+		if (MutationObserver) { //Modern Browsers supporting MutationObserver
+			/*
+			   Mutation Observer is still new and not supported by all browsers. 
+			   http://lists.w3.org/Archives/Public/public-webapps/2011JulSep/1622.html
+			*/
+			var options = {
+				subtree: false,
+				attributes: true,
+				attributeOldValue: true
+			};
+	
+			var observer = new MutationObserver(function(mutations) {
+				mutations.forEach(function(e) {
+					callback.call(e.target, e, e.attributeName);
+				});
 			});
-		});
+	
+			return this.each(function() {
+				observer.observe(this, options);
+			});
+		} else if (isDOMAttrModifiedSupported()) { //Opera
+			//Good old Mutation Events but the performance is no good
+			//http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/
+			return this.on('DOMAttrModified', function(e) {
+				callback.call(this, e, e.attrName);
+			});
+		} else if ('onpropertychange' in document.body) { //works only in IE		
+			return this.on('propertychange', function(e) {
+				callback.call(this, e, window.event.propertyName);
+			});
+		}
 
-		return this.each(function() {
-			observer.observe(this, options);
-		});
-	} else if (isDOMAttrModifiedSupported()) {
-		//Good old Mutation Events but the performance is no good
-		//http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/
-		return this.on('DOMAttrModified', function(e) {
-			callback.call(this, e);
-		});
-	} else if ('onpropertychange' in document.body) {
-		//works only in IE
-		return this.on('propertychange', function(e) {
-			callback.call(this, e, window.event.propertyName);
-		});
-	}
-   }
+		return this;
+    }
 })(jQuery);
