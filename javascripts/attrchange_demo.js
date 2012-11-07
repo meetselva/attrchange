@@ -16,7 +16,6 @@ Public License for more details.
 You should have received a copy  of the GNU General Public License along
 with this program. If not, see <http://www.gnu.org/licenses/>.
 */
-(function(a){function b(){var a=document.createElement("p");var b=false;if(a.addEventListener)a.addEventListener("DOMAttrModified",function(){b=true},false);else if(a.attachEvent)a.attachEvent("onDOMAttrModified",function(){b=true});else return false;a.setAttribute("id","target");return b}var c=window.MutationObserver||window.WebKitMutationObserver||window.MozMutationObserver;a.fn.attrchange=function(a){if(c){var d={subtree:false,attributes:true};var e=new c(function(b){b.forEach(function(b){a.call(b.target,b,b.attributeName)})});return this.each(function(){e.observe(this,d)})}else if(b()){return this.on("DOMAttrModified",function(b){a.call(this,b,b.attrName)})}else if("onpropertychange"in document.body){return this.on("propertychange",function(b){a.call(this,b,window.event.propertyName)})}}})(jQuery)
 
 $(function() {
 
