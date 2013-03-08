@@ -35,7 +35,7 @@ with this program. If not, see <http://www.gnu.org/licenses/>.
    }
 
    //initialize Mutation Observer
-   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
+   var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
 
    $.fn.attrchange = function(callback) {	  
 		if (MutationObserver) { //Modern Browsers supporting MutationObserver
