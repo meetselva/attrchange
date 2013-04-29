@@ -5,8 +5,8 @@ http://meetselva.github.io/attrchange/
 About License:
 Copyright (C) 2013 Selvakumar Arumugam
 Dual licensed under the MIT and GPL licenses.
-https://github.com/meetselva/meetselva.github.com/blob/master/GPL-License.txt
-https://github.com/meetselva/meetselva.github.com/blob/master/MIT-License.txt
+https://github.com/meetselva/attrchange/blob/master/GPL-License.txt
+https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 */
 (function($) {
    function isDOMAttrModifiedSupported() {
