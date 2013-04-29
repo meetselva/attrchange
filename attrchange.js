@@ -4,8 +4,7 @@ http://meetselva.github.io/attrchange/
 
 About License:
 Copyright (C) 2013 Selvakumar Arumugam
-Dual licensed under the MIT and GPL licenses.
-https://github.com/meetselva/attrchange/blob/master/GPL-License.txt
+You may use attrchange plugin under the terms of the MIT Licese.
 https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 */
 (function($) {
