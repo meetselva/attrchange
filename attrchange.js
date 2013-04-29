@@ -1,20 +1,12 @@
 /*
-A simple jQuery function that can be used to add listeners on attribute change.
+A simple jQuery function that can add listeners on attribute change.
+http://meetselva.github.io/attrchange/
 
-Copyright (C) (2011-2012) Selvakumar Arumugam
-
-This program is free software: you  can redistribute it and/or modify it
-under the  terms of the GNU  General Public License as  published by the
-Free Software Foundation,  either version 3 of the License,  or (at your
-option) any later version.
-
-This  program  is distributed  in  the  hope  that  it will  be  useful,
-but  WITHOUT  ANY  WARRANTY;  without   even  the  implied  warranty  of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-Public License for more details.
-
-You should have received a copy  of the GNU General Public License along
-with this program. If not, see <http://www.gnu.org/licenses/>.
+About License:
+Copyright (C) 2013 Selvakumar Arumugam
+Dual licensed under the MIT and GPL licenses.
+https://github.com/meetselva/meetselva.github.com/blob/master/GPL-License.txt
+https://github.com/meetselva/meetselva.github.com/blob/master/MIT-License.txt
 */
 (function($) {
    function isDOMAttrModifiedSupported() {
