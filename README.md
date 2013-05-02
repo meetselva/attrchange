@@ -9,10 +9,10 @@ http://meetselva.github.com/attrchange/
 
 Reference:
 ==========
-http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/
-https://developer.mozilla.org/en/DOM/Mutation_events
-https://developer.mozilla.org/en/DOM/DOM_Mutation_Observers
-http://msdn.microsoft.com/en-us/library/ie/ms536956%28v=vs.85%29.aspx
+ - http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/
+ - https://developer.mozilla.org/en/DOM/Mutation_events
+ - https://developer.mozilla.org/en/DOM/DOM_Mutation_Observers
+ - http://msdn.microsoft.com/en-us/library/ie/ms536956%28v=vs.85%29.aspx
 
 Browser Support Information:
 ============================
