@@ -18,9 +18,9 @@
 	<script>
 		$(function () {			
 			$('.test').attrchange({
-				attributeOldValue: true, 
+				trackValues: true, 
 				callback: function (e) {
-					$('.logger').append($(this).index() + ' ' + e.attributeName + ' ' + e.oldValue + '<br/>');
+					$('.logger').append($(this).index() + ' ' + e.attributeName + ' ' + e.oldValue + ' ' + e.newValue + '<br/>');
 				}
 			}).animate({top: 100}, 500);
 			

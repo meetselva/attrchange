@@ -32,11 +32,13 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 			if (e.attributeName.indexOf('style') >= 0) {
 				if (!attributes['style']) attributes['style'] = {}; //initialize
 				var keys = e.attributeName.split('.'); 				
-				e.oldValue = attributes['style'][keys[1]];
-				attributes['style'][keys[1]] = this.prop("style")[$.camelCase(keys[1])];
+				e.oldValue = attributes['style'][keys[1]]; //old value
+				e.newValue = this.prop("style")[$.camelCase(keys[1])]; //new value
+				attributes['style'][keys[1]] = keys[1] + ':' + e.newValue;
 			} else {
 				e.oldValue = attributes[e.attributeName];
-				attributes[e.attributeName] = this.attr(e.attributeName); 
+				e.newValue = this.attr(e.attributeName);
+				attributes[e.attributeName] = e.newValue; 
 			}
 			
 			this.data('attr-old-value', attributes); //update the old value object
@@ -49,7 +51,7 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
    $.fn.attrchange = function(o) {
 	   
 		var cfg = {
-			attributeOldValue: false,
+			trackValues: false,
 			callback: $.noop
 		};
 		
@@ -60,7 +62,7 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 			$.extend(cfg, o); 
 		}
 
-	    if (cfg.attributeOldValue) { //get attributes old value
+	    if (cfg.trackValues) { //get attributes old value
 	    	$(this).each(function (i, el) {
 	    		var attributes = {};
 	    		for (var attr, i=0, attrs=el.attributes, l=attrs.length; i<l; i++){
@@ -80,12 +82,24 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 			var mOptions = {
 				subtree: false,
 				attributes: true,
-				attributeOldValue: cfg.attributeOldValue
+				attributeOldValue: cfg.trackValues
 			};
 	
 			var observer = new MutationObserver(function(mutations) {
 				mutations.forEach(function(e) {
-					cfg.callback.call(e.target, e);
+					var _this = e.target;
+					
+					//get new value if trackValues is true
+					if (cfg.trackValues) {
+						if (e.attributeName.indexOf('style') >= 0) {
+							var keys = e.oldValue.split(':');							
+							e.newValue = $(_this).prop("style")[$.camelCase(keys[0])]; //new value
+						} else {
+							e.newValue = $(_this).attr(e.attributeName);
+						}
+					}
+					
+					cfg.callback.call(_this, e);
 				});
 			});
 	
@@ -98,14 +112,14 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 			return this.on('DOMAttrModified', function(e) {
 				e.attributeName = e.attrName;
 				//to set the attr old value
-				checkAttributes.call($(this), cfg.attributeOldValue , e);
+				checkAttributes.call($(this), cfg.trackValues , e);
 				cfg.callback.call(this, e);
 			});
 		} else if ('onpropertychange' in document.body) { //works only in IE		
 			return this.on('propertychange', function(e) {
 				e.attributeName = window.event.propertyName;
 				//to set the attr old value
-				checkAttributes.call($(this), cfg.attributeOldValue , e);
+				checkAttributes.call($(this), cfg.trackValues , e);
 				cfg.callback.call(this, e);
 			});
 		}
