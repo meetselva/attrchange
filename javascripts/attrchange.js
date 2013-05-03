@@ -33,10 +33,12 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 				if (!attributes['style']) attributes['style'] = {}; //initialize
 				var keys = e.attributeName.split('.'); 				
 				e.oldValue = attributes['style'][keys[1]];
-				attributes['style'][keys[1]] = this.prop("style")[$.camelCase(keys[1])];
+				e.newValue = this.prop("style")[$.camelCase(keys[1])];
+				attributes['style'][keys[1]] = keys[1] + ':' + e.newValue;
 			} else {
 				e.oldValue = attributes[e.attributeName];
-				attributes[e.attributeName] = this.attr(e.attributeName); 
+				e.newValue = this.attr(e.attributeName);
+				attributes[e.attributeName] = e.newValue; 
 			}
 			
 			this.data('attr-old-value', attributes); //update the old value object

@@ -37,8 +37,11 @@ $(function() {
     }, 1000);
     
     var $logger1 = $('#example1 .logger');
-    $blocks.attrchange(function(e, attrName) {      
-        $logger1.append('<p>- attribute <b>' + attrName + '</b> changed for <b>' + this.title + '</b></p>');       
+    $blocks.attrchange({
+    	attributeOldValue: true,
+    	callback: function(e) {      
+	        $logger1.append('<p><b>' + e.attributeName + '</b> changed for <b>' + this.title + '</b> from <b>' + e.oldValue + '</b> to <b>' + e.newValue + '</b></p>');       
+	    }
     });
     
     //clear logger after 2 secs
@@ -52,10 +55,11 @@ $(function() {
 
     var $logger2 = $('#example2 .logger'); //,logStyler = 0;
 
-    $attrchange.attrchange(function(e, attrName) {
-        //var rowStyle = (logStyler) ? 'odd' : 'even';
-        $logger2.prepend('<p>- attribute <b>' + attrName + '</b> changed for ' + $(this).html() + '</p>');
-        //logStyler = logStyler ? 0 : 1;
+    $attrchange.attrchange({
+    	attributeOldValue: true,
+    	callback: function(e) {
+    		$logger2.prepend('<p>Attribute <b>' + e.attributeName + '</b> changed for ' + $(this).html() + '. Old value: <b>' + e.oldValue + '</b></p>');
+    	}
     });
 
     $attrchange.click(function() {
