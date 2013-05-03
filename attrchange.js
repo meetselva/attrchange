@@ -34,18 +34,10 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 				var keys = e.attributeName.split('.'); 				
 				e.oldValue = attributes['style'][keys[1]];
 				
-				var styles = this.attr("style"), value;
-				styles && $.each(styles.toLowerCase().split(";"), function (i, v) {
-					var style = v.split(":");
-					if ($.trim(style[0]) === keys[1]) {
-	                  value = style[1];           
-					}                    
-				});
-				
-				attributes['style'][keys[1]] = value; //get last known value
+				attributes['style'][keys[1]] = this.prop("style")[$.camelCase(keys[1])];
 			} else {
 				e.oldValue = attributes[e.attributeName];
-				attributes[e.attributeName] = this.attr(e.attributeName); //get last known value
+				attributes[e.attributeName] = this.attr(e.attributeName);
 			}
 			
 			this.data('attr-old-value', attributes); //update the old value object

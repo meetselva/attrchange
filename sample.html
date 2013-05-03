@@ -10,29 +10,28 @@
     <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js" type="text/javascript"></script>
 	<script src="attrchange.js"></script>
 	<style>
-		#test { position: absolute; top: 0; }
+		.test { position: absolute; top: 0; }
+		.test:nth-child(1) { left: 60px; }
+		.test:nth-child(2) { left: 120px; }
 		.logger { height: 200px; overflow: auto; border: 1px solid #4169E1; background-color: #DADFFA; color: black; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; float: right; width: 320px;}
 	</style>
 	<script>
-		$(function () {
-			var timer = setInterval(function () {
-				$('#test').animate({top: ($('#test').position().top + 1)}, 00);
-			}, 500);
-			
-			setTimeout(function() {
-				clearInterval(timer);
-			}, 10000);
-			
-			$('#test').attrchange(function (e) {
-				$('.logger').append(e.attributeName + ' ' + e.oldValue);
-			})
+		$(function () {			
+			$('.test').attrchange({
+				attributeOldValue: true, 
+				callback: function (e) {
+					$('.logger').append($(this).index() + ' ' + e.attributeName + ' ' + e.oldValue + '<br/>');
+				}
+			}).animate({top: 100}, 500);
 			
 		});
 	</script>
 	
   </head>
   <body>
-  	<div id="test">TEST</div>
+  	<div class="test">TEST</div>
+  	<div class="test">TEST</div>
+  	<div class="test">TEST</div>
   	<div class="logger"></div>
   </body>
 </html>
