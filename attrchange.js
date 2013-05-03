@@ -33,8 +33,8 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 				if (!attributes['style']) attributes['style'] = {}; //initialize
 				var keys = e.attributeName.split('.'); 				
 				e.oldValue = attributes['style'][keys[1]]; //old value
-				e.newValue = this.prop("style")[$.camelCase(keys[1])]; //new value
-				attributes['style'][keys[1]] = keys[1] + ':' + e.newValue;
+				e.newValue = keys[1] + ':' + this.prop("style")[$.camelCase(keys[1])]; //new value
+				attributes['style'][keys[1]] = e.newValue;
 			} else {
 				e.oldValue = attributes[e.attributeName];
 				e.newValue = this.attr(e.attributeName);
@@ -93,7 +93,7 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 					if (cfg.trackValues) {
 						if (e.attributeName.indexOf('style') >= 0) {
 							var keys = e.oldValue.split(':');							
-							e.newValue = $(_this).prop("style")[$.camelCase(keys[0])]; //new value
+							e.newValue = keys[0] + ':' + $(_this).prop("style")[$.camelCase(keys[0])]; //new value
 						} else {
 							e.newValue = $(_this).attr(e.attributeName);
 						}
