@@ -31,7 +31,8 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 			
 			if (e.attributeName.indexOf('style') >= 0) {
 				if (!attributes['style']) attributes['style'] = {}; //initialize
-				var keys = e.attributeName.split('.'); 				
+				var keys = e.attributeName.split('.');
+				e.attributeName = keys[0];
 				e.oldValue = attributes['style'][keys[1]]; //old value
 				e.newValue = keys[1] + ':' + this.prop("style")[$.camelCase(keys[1])]; //new value
 				attributes['style'][keys[1]] = e.newValue;
@@ -91,12 +92,11 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 					
 					//get new value if trackValues is true
 					if (cfg.trackValues) {
-						if (e.attributeName.indexOf('style') >= 0) {
-							var keys = e.oldValue.split(':');							
-							e.newValue = keys[0] + ':' + $(_this).prop("style")[$.camelCase(keys[0])]; //new value
-						} else {
-							e.newValue = $(_this).attr(e.attributeName);
-						}
+						/**
+						 * @KNOWN_ISSUE: The new value is buggy for STYLE attribute as we don't have 
+						 * any additional information on which style is getting updated. 
+						 * */
+						e.newValue = $(_this).attr(e.attributeName);
 					}
 					
 					cfg.callback.call(_this, e);

@@ -11,18 +11,18 @@
 	<script src="attrchange.js"></script>
 	<style>
 		.test { position: absolute; top: 0; }
-		.test:nth-child(1) { left: 60px; }
-		.test:nth-child(2) { left: 120px; }
-		.logger { height: 200px; overflow: auto; border: 1px solid #4169E1; background-color: #DADFFA; color: black; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; float: right; width: 320px;}
+		.test:nth-child(2) { left: 60px; }
+		.test:nth-child(3) { left: 120px; }
+		.logger { height: 200px; overflow: auto; border: 1px solid #4169E1; background-color: #DADFFA; color: black; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; float: right; width: 620px;}
 	</style>
 	<script>
 		$(function () {			
-			$('.test').attrchange({
+			$('.test').eq(0).attrchange({
 				trackValues: true, 
 				callback: function (e) {
-					$('.logger').append($(this).index() + ' ' + e.attributeName + ' ' + e.oldValue + ' ' + e.newValue + '<br/>');
+					$('.logger').append('Index: ' + $(this).index() + ' Attribute Name: ' + e.attributeName + ' Old Value: ' + e.oldValue + ((e.newValue)?(' New Value: ' + e.newValue):'') + '<br/>');
 				}
-			}).animate({top: 100}, 500);
+			}).css({top: 10, left: 10});
 			
 		});
 	</script>
