@@ -36,7 +36,7 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 				attributes['style'][keys[1]] = this.prop("style")[$.camelCase(keys[1])];
 			} else {
 				e.oldValue = attributes[e.attributeName];
-				attributes[e.attributeName] = this.attr(e.attributeName);
+				attributes[e.attributeName] = this.attr(e.attributeName); 
 			}
 			
 			this.data('attr-old-value', attributes); //update the old value object
