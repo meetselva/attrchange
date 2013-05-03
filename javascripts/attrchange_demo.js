@@ -38,7 +38,7 @@ $(function() {
     
     var $logger1 = $('#example1 .logger');
     $blocks.attrchange({
-    	attributeOldValue: true,
+    	trackValues: true,
     	callback: function(e) {      
 	        $logger1.append('<p><b>' + e.attributeName + '</b> changed for <b>' + this.title + '</b> from <b>' + e.oldValue + '</b> to <b>' + e.newValue + '</b></p>');       
 	    }
@@ -56,9 +56,9 @@ $(function() {
     var $logger2 = $('#example2 .logger'); //,logStyler = 0;
 
     $attrchange.attrchange({
-    	attributeOldValue: true,
+    	trackValues: true,
     	callback: function(e) {
-    		$logger2.prepend('<p>Attribute <b>' + e.attributeName + '</b> changed for ' + $(this).html() + '. Old value: <b>' + e.oldValue + '</b></p>');
+    		$logger2.prepend('<p>Attribute <b>' + e.attributeName + '</b> changed for ' + $(this).html() + '. from <b>' + e.oldValue + '</b> to <b>' + e.newValue + '</b></p>');
     	}
     });
 
