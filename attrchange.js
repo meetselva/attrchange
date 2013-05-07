@@ -33,11 +33,11 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 				if (!attributes['style']) attributes['style'] = {}; //initialize
 				var keys = e.attributeName.split('.');
 				e.attributeName = keys[0];
-				e.oldValue = attributes['style'][keys[1]]; //old value
+				e.prevValue = attributes['style'][keys[1]]; //old value
 				e.newValue = keys[1] + ':' + this.prop("style")[$.camelCase(keys[1])]; //new value
 				attributes['style'][keys[1]] = e.newValue;
 			} else {
-				e.oldValue = attributes[e.attributeName];
+				e.prevValue = attributes[e.attributeName];
 				e.newValue = this.attr(e.attributeName);
 				attributes[e.attributeName] = e.newValue; 
 			}
@@ -110,9 +110,8 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 			//Good old Mutation Events but the performance is no good
 			//http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/
 			return this.on('DOMAttrModified', function(e) {
+				if (!e) e = window.event; else e = event;
 				e.attributeName = e.attrName;
-				//to set the attr old value
-				checkAttributes.call($(this), cfg.trackValues , e);
 				cfg.callback.call(this, e);
 			});
 		} else if ('onpropertychange' in document.body) { //works only in IE		
