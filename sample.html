@@ -20,7 +20,7 @@
 			$('.test').eq(0).attrchange({
 				trackValues: true, 
 				callback: function (e) {
-					$('.logger').append('Index: ' + $(this).index() + ' Attribute Name: ' + e.attributeName + ' Prev Value: ' + e.prevValue + ((e.newValue)?(' New Value: ' + e.newValue):'') + '<br/>');
+					$('.logger').append('Index: ' + $(this).index() + ' Attribute Name: ' + e.attributeName + ' Prev Value: ' + e.oldValue + ((e.newValue)?(' New Value: ' + e.newValue):'') + '<br/>');
 				}
 			}).css({top: 10, left: 10});
 			
