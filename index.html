@@ -11,7 +11,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/attrchange_demo.css">
     
     <script src="http://code.jquery.com/jquery.min.js"></script>
-    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
     <script src="javascripts/prettify.js" type="text/javascript"></script>
     <script src="javascripts/attrchange.js" type="text/javascript"></script>
     <script src="javascripts/attrchange_demo.js" type="text/javascript"></script>
@@ -20,7 +20,7 @@
     
     <style>
       .strong { font-weight: bold; }
-      .beta { font-size: 0.4em; color: #0077DE; }
+      .beta { font-size: 0.4em; color: #0077DE; }      
     </style>
     
     <script>    
@@ -68,65 +68,61 @@
         src="https://raw.github.com/meetselva/attrchange/master/attrchange.js"&gt;&lt;/script&gt;</pre>
         </p>
         <p>Bind attrchange handler function to selected elements
-        <pre class="prettyprint">$(selector).attrchange(function (event, attrName) { 
-    //event    	 - event object
-    //attrName - Name of the attribute
-    //Triggered when the selected elements attribute is added/updated/removed
+        <pre class="prettyprint">$(selector).attrchange({
+	trackValues: true, /* Default to false, if set to true the event object is 
+				updated with old and new value.*/
+	callback: function (event) { 
+	    //event    	          - event object
+	    //event.attributeName - Name of the attribute modified
+	    //event.oldValue      - Previous value of the modified attribute
+	    //event.newValue      - New value of the modified attribute
+	    //Triggered when the selected elements attribute is added/updated/removed
+	}        
 });</pre>
         </p>
 		<h2>Examples: </h2>
         <div class="example" id="example1">
           <p>
-            <b>Example 1:</b> A simple example to demonstrate the execution of the onattrchange handler function. 
-          </p>
-          <p>
-          	In the demo, each block's top position is increased/decreased by 5px every second which 
-          	triggers the attrchange handler. Inside the handler is a simple logger which displays the name of 
-          	the attribute along with the block number. 
+            <b>Example 1:</b> An interactive demo to show when the handler is triggered and the additional information available 
+            inside the handler. Try using the <button disabled="true">&laquo;</button> and <button disabled="true">&raquo;</button> 
+            in the left block to move the div block +/- 10px to left/right which triggers the attribute change handler.
           </p>         
           <div>
             <a href="javascript:void(0)" class="showcode strong">Show code</a>
             <div class="demo_code" style="display: none;">
-            <b>HTML:</b>
-            <pre class="prettyprint">
+             <pre class="prettyprint">
 &lt;div id="blocks"&gt;
      &lt;div title="b1" class="block" &gt;b1&lt;/div&gt;
-     &lt;div title="b2" class="block" &gt;b2&lt;/div&gt;
-     &lt;div title="b3" class="block" &gt;b3&lt;/div&gt;
-     &lt;div title="b4" class="block" &gt;b4&lt;/div&gt;
-     &lt;div title="b5" class="block" &gt;b5&lt;/div&gt;  
-&lt;/div&gt;
-            </pre>
-            <b>JS:</b>
+&lt;/div&gt;</pre>
+            <hr />
             <pre class="prettyprint">
-$('#blocks .block').attrchange(function(e, attrName) {
-  $('#example1 .logger').prepend('&lt;p&gt;- attribute &lt;b&gt;' + attrName + '&lt;/b&gt; changed for &lt;b&gt;' + 
-  		        this.title + '&lt;/b&gt;&lt;/p&gt;');
-}); 
-            </pre>
+$('#blocks .block').attrchange(
+	trackValues: true,
+	callback: function(e) {
+		$('#example1 .logger').prepend('&lt;p&gt;&lt;b&gt;' + e.attributeName + 
+			'&lt;/b&gt; changed for &lt;b&gt;' + this.title + 
+			'&lt;/b&gt; from &lt;b&gt;' + e.oldValue + 
+			'&lt;/b&gt; to &lt;b&gt;' + e.newValue + '&lt;/b&gt;&lt;/p&gt;');
+	}
+});         </pre>
             </div>
           </div>
           <hr />
           <div id="blocks">
+          	  <p><button id="left">&laquo;</button> <button id="right">&raquo;</button></p>
               <div class="block" title="b1">b1</div>
-              <div class="block" title="b2">b2</div>  
-              <div class="block" title="b3">b3</div>
-              <div class="block" title="b4">b4</div>
-              <div class="block" title="b5">b5</div>
           </div>
           <div class="logger"></div>
           <div clsas="clear"></div>
-          <p class="text-right small note"><b>Note:</b> logger is cleared every 10 seconds</p>
+          <!-- p class="text-right small note"><b>Note:</b> logger is cleared every 10 seconds</p-->
         </div>
+        <div class="clear"></div>
         <hr/>
         <div class="example" id="example2">          
 	      <p>
-	         <b>Example 2:</b> An interactive demo to show the execution of the onattrchange handler function. 
-	      </p>
-	      <p>
-	      The interactive demo allows you to add/update/remove attributes on the demo div elements. Click on the 
-	      demo div to pop the Attribute Changer dialog, using which you can add/update the attributes of the selected
-	      div. 	      
+	         <b>Example 2:</b> An interactive demo to test different conditions when the handler function will be called.
+	         You can add/update/remove attributes on the demo div elements. Click on the demo div boxes to pop the Attribute Changer dialog, 
+	         using which you can add/remove/update the attributes of the selected div box. 	      
 	      </p>
 	      <p>
 	      Upon each update the handler function will be triggered and In this example the handler function simply prints
@@ -172,10 +168,9 @@ $('.demo-content').attrchange(function(e, attrName) {
               <div title="click to add/update/remove the attributes" class="demo" id="demo4">demo 4 div</div>
               <div title="click to add/update/remove the attributes" class="demo" id="demo5">demo 5 div</div>
           </div>
-          <div class="logger" style="height: 210px;">
+          <div class="logger" >
             <!-- a href="javascript:void(0)" id="clearLog" class="float-right" style="margin-right: 10px; position: absolute; right:0px; top:0px; background-color: #3E6B9D; color: white; ">clear</a -->
-          </div>
-          <div clsas="clear"></div>
+          </div>          
           <p class="text-right small note"><b>Note:</b> logger to show the execution of the handler function</p>
           
           <div id="attributeChanger">
@@ -195,12 +190,12 @@ $('.demo-content').attrchange(function(e, attrName) {
               <div class="clear"></div>
           </div>
         </div>
-        
+       
         <h2>Download</h2>
         <p><a class="" href="https://github.com/meetselva/attrchange/zipball/master">Download as a .zip file</a></p>
         <p><a class="" href="https://github.com/meetselva/attrchange/tarball/master">Download as a tar.gz file</a></p>
-                
-        <h2>Browser Compatibility</h2>
+       
+       <h2>Browser Compatibility</h2>
         <p>This plugin has been successfully tested in the following browsers:</p>
         <ul>
         	<li>IE6+</li>

@@ -1,51 +1,38 @@
 /*
 A simple jQuery function that can be used to add listeners on attribute change.
 
-Copyright (C) (2011-2012) Selvakumar Arumugam
-
-This program is free software: you  can redistribute it and/or modify it
-under the  terms of the GNU  General Public License as  published by the
-Free Software Foundation,  either version 3 of the License,  or (at your
-option) any later version.
-
-This  program  is distributed  in  the  hope  that  it will  be  useful,
-but  WITHOUT  ANY  WARRANTY;  without   even  the  implied  warranty  of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-Public License for more details.
-
-You should have received a copy  of the GNU General Public License along
-with this program. If not, see <http://www.gnu.org/licenses/>.
+About License:
+Copyright (C) 2013 Selvakumar Arumugam
+You may use attrchange plugin under the terms of the MIT Licese.
+https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 */
 
 $(function() {
 
-   //example 1 - http://jsfiddle.net/GwBhW/
-   var dir = 1, $blocks = $('#blocks .block'), curTop = 30;
-    
-   setInterval(function() {
-        if (dir == 1) {
-           curTop += 5;
-           if (curTop > 75) dir = -1;
-        } else {
-           curTop -= 5;
-           if (curTop <= 30) dir = 1;
-        }        
-
-        $.each($blocks, function() {
-           $(this).css('top', curTop);
-        });
-    }, 1000);
-    
+    //example 1 - http://jsfiddle.net/GwBhW/
+    var $blocks = $('#blocks .block');
     var $logger1 = $('#example1 .logger');
+    
     $blocks.attrchange({
     	trackValues: true,
     	callback: function(e) {      
-	        $logger1.append('<p><b>' + e.attributeName + '</b> changed for <b>' + this.title + '</b> from <b>' + e.oldValue + '</b> to <b>' + e.newValue + '</b></p>');       
+	        $logger1
+	        	.prepend('<p><b>' + e.attributeName + '</b> changed for <b>' + this.title + '</b> from <b>' + e.oldValue + '</b> to <b>' + e.newValue + '</b></p>')
+	        	.find('p')
+	        	.css('color', 'black')
+	        	.first()
+	        	.css('color', 'blue');       
 	    }
-    });
+    })
     
+	$("#right").click(function(){
+		$blocks.css({"left": "+=10px"});
+	});
+	$("#left").click(function(){
+		$blocks.css({"left": "-=10px"});		
+	});
     //clear logger after 2 secs
-    setInterval(function () { $logger1.html('');  }, 10000);
+   //setInterval(function () { $logger1.html('');  }, 10000);
  
    //example 2 - http://jsfiddle.net/PV8jj/12/
     var attrTmpl = '<p title="{attrName}">{attrName}<a href="javascript:void(0)" class="remove float-right" title="remove">remove</a><span class="float-right">&nbsp;|&nbsp;</span><a href="javascript:void(0)" class="modify float-right" title="modify">modify</a></p>';
@@ -58,7 +45,7 @@ $(function() {
     $attrchange.attrchange({
     	trackValues: true,
     	callback: function(e) {
-    		$logger2.prepend('<p>Attribute <b>' + e.attributeName + '</b> changed for ' + $(this).html() + '. from <b>' + e.oldValue + '</b> to <b>' + e.newValue + '</b></p>');
+    		$logger2.prepend('<p>Attribute <b>' + e.attributeName + '</b> changed for ' + $(this).html() + ' from <b>' + e.oldValue + '</b> to <b>' + e.newValue + '</b></p>');
     	}
     });
 
