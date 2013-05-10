@@ -42,7 +42,7 @@
         <header class="inner">
           <a id="forkme_banner" href="https://github.com/meetselva/attrchange">View on GitHub</a>
 
-          <h1 id="project_title">attrchange <span class="beta">beta</span></h1>
+          <h1 id="project_title">attrchange <span class="beta" style="text-decoration: line-through;" title="Almost there...">beta</span></h1>
           <h2 id="project_tagline">onattrchange listener</h2>
           <h4 class="small spaced">a jQuery plugin</h4>
           <div id="downloads">
@@ -114,7 +114,7 @@ $('#blocks .block').attrchange(
           </div>
           <div class="logger"></div>
           <div clsas="clear"></div>
-          <!-- p class="text-right small note"><b>Note:</b> logger is cleared every 10 seconds</p-->
+          <p class="text-right small note"><b>Note:</b>Updated log is highligted in blue </p>
         </div>
         <div class="clear"></div>
         <hr/>
@@ -207,12 +207,9 @@ $('.demo-content').attrchange(function(e, attrName) {
         <p><b>onpropertychange</b>    - All versions of IE</p>
         <p class="small">** yet to test complex scenarios</p> -->
         
-        <h2>What is in Next Release?</h2>
-        <ul>
-        	<li>Monitor specific attribute change</li>
-        	<li>Manage attribute value change</li>
-        	<li>Filter list of attribute to track</li>
-        </ul>
+        <h2>Known Issues</h2>
+      	<p>attrchange plugin uses different API to support cross browser/backward compatibility. The response has been normalized to match with the response from MutationObserver however the return values from the API's are sometimes different especially on style attribute.</p>
+      	<p>On changing the style attribute, Older standard such as DOMAttrModified/onpropertychange returns the specific css property that was updated (ex: return for updating css top would return -> top: 60px) but the MutationObserver returns the entire style attribute value and not the property that was changed (something like $(this).attr('style')).</p>  		
         
         <div id="overlay"></div>
         
