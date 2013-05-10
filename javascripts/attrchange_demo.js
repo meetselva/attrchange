@@ -76,7 +76,7 @@ $(function() {
             && !$(e.target).closest('#attributeChanger').length
             && !$('#overlay').is(':visible')) {
             $attributeChanger.stop(true, true).animate({
-                top: -100,
+                top: -500,
                 opacity: 0
             }, 500);
         }

@@ -7,7 +7,7 @@ div.demo-content { z-index: 1; border: 2px solid #4169E1; background-color: #DAD
 div.demo-content div { border: 1px dotted #4169E1; width: 100px; height: 20px; margin: 10px; padding: 5px; font-size: 0.9em; background-color: #4169E1; color: white; z-index: 1009; }
 div.demo-content div:hover { border-style: solid; }
 
-#attributeChanger { border: 1px solid #4169E1; min-height: 50px; margin: 10px; padding: 2px; font-size: 0.9em; background-color: #FEFFFF; color: #574353; opacity: 0; position: absolute; top: -200px; z-index: -1; filter: alpha(opacity=0); z-index:1; min-width: 150px; }
+#attributeChanger { border: 1px solid #4169E1; min-height: 50px; margin: 10px; padding: 2px; font-size: 0.9em; background-color: #FEFFFF; color: #574353; opacity: 0; position: absolute; top: -500px; z-index: -1; filter: alpha(opacity=0); z-index:1; min-width: 150px; }
 
 .attrList p { width: 95%; margin-top: 3px; margin-left: 5px; }
 .attrList p a, .attrList p span { font-size: 0.9em; vertical-align: bottom; margin-top: 2px; }
