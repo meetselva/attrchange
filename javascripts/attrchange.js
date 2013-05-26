@@ -109,11 +109,11 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 		} else if (isDOMAttrModifiedSupported()) { //Opera
 			//Good old Mutation Events but the performance is no good
 			//http://hacks.mozilla.org/2012/05/dom-mutationobserver-reacting-to-dom-changes-without-killing-browser-performance/
-			return this.on('DOMAttrModified', function(e) {
-				if (!e) e = window.event; else e = event;
-				e.attributeName = e.attrName; //property names to be consistent with MutationObserver
-				e.oldValue = e.prevValue; //property names to be consistent with MutationObserver 
-				cfg.callback.call(this, e);
+			return this.on('DOMAttrModified', function(event) {
+				if (event.originalEvent) event = event.originalEvent; //jQuery normalization is not required for us 
+				event.attributeName = event.attrName; //property names to be consistent with MutationObserver
+				event.oldValue = event.prevValue; //property names to be consistent with MutationObserver 
+				cfg.callback.call(this, event);
 			});
 		} else if ('onpropertychange' in document.body) { //works only in IE		
 			return this.on('propertychange', function(e) {
