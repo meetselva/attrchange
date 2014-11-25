@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Attrchange : onattrchange listener" />
+
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.0/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="attrchange.js"></script>
+    <script src="attrchange_ext.js"></script>
+	<style>
+		.test { position: absolute; top: 30px; }
+		.test:nth-child(2) { left: 60px; }
+		.test:nth-child(3) { left: 120px; }
+		.logger { height: 200px; overflow: auto; border: 1px solid #4169E1; background-color: #DADFFA; color: black; bottom: 0px; left: 0px; font-size: 0.8em; padding-left: 2px; overflow-y: scroll; float: right; width: 620px;}
+	</style>
+	<script>
+		$(function () {			
+			$('.test').attrchange('polling', {
+				pollingInterval: 5000, 
+				callback: function (changes) {
+					var logger = [];
+					for (var keys in changes) {
+						var properties = $(this).attrchange('getProperties');
+						$('.logger').prepend('Status: ' + properties.status + '. Is Polling: ' + properties.isPolling + '. Attribute Name: ' + keys + ' Prev Value: ' + changes[keys].oldValue + ' New Value: ' + changes[keys].newValue + '<br />');
+					}
+					$('.logger').prepend(logger.join(''));
+				}
+			});
+			
+			$('button.addTop').click (function () {
+				$('.test').css('top', '+=10px');
+			})
+			$('button.disconnect').click (function () {
+				var props = $('.test').attrchange('disconnect').attrchange('getProperties');
+				$('.logger').prepend('Status: ' + props.status + '<br/>');				
+			});
+			$('button.reconnect').click (function () {
+				var props = $('.test').attrchange('reconnect').attrchange('getProperties');
+				$('.logger').prepend('Status: ' + props.status + '<br/>');
+			});
+			$('button.remove').click (function () {
+				var props = $('.test').attrchange('remove').attrchange('getProperties');
+				$('.logger').prepend('Status: ' + props.status + '<br/>');
+			});
+		});
+	</script>
+	
+  </head>
+  <body>
+  	<div class="test" style="border: 1px solid blue;">test</div>
+  	<div class="test">test</div>
+  	<div class="test">test</div>
+  	<div class="logger"></div>
+  	<button class="addTop">Add 10px Top</button>
+  	<button class="disconnect">Disconnect</button>
+  	<button class="reconnect">Re-connect</button>
+  	<button class="remove">Remove</button>
+  </body>
+</html>
