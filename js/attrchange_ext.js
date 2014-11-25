@@ -34,39 +34,64 @@ $.fn.attrchange.extensions = { /*attrchange option/extension*/
 			method: attrchangeMethod,
 			isPolling: (attrchangeMethod == 'polling'),
 			pollingInterval: (typeof pollInterval === 'undefined')?0:parseInt(pollInterval, 10),
-			status: (typeof $(this).data('attrchange-tdisconnect') === 'undefined')?((typeof attrchangeMethod === 'undefined')?'removed':'connected'):'disconnected'
+			status: (typeof attrchangeMethod === 'undefined')?'removed': (typeof $(this).data('attrchange-tdisconnect') === 'undefined')?'connected':'disconnected'
 		}
 	},
 	reconnect: function (o) {//reconnect possible only when there is a logical disconnect
 		return this.removeData('attrchange-tdisconnect');
 	},
 	polling: function (o) {
-		return this.each(function() {
-			var attributes = {};
-			for (var attr, i=0, attrs=this.attributes, l=attrs.length; i<l; i++){
-				attr = attrs.item(i);
-				attributes[attr.nodeName] = attr.nodeValue;
-			}
-			//this.data('attrchange-polling-attributes', attributes); //save the initial values
-			var _this = this;
-			$(this).data('attrchange-polling-timer', setInterval(function () {
-				var changes = {}, hasChanges = false; // attrName: { oldValue: xxx, newValue: yyy}						
-				for (var attr, i=0, attrs=_this.attributes, l=attrs.length; i<l; i++){
-					attr = attrs.item(i);							
-					if (attributes.hasOwnProperty(attr.nodeName) &&
-							attributes[attr.nodeName] != attr.nodeValue) { //check the values
-						changes[attr.nodeName] = {oldValue: attributes[attr.nodeName], newValue: attr.nodeValue};
-						hasChanges = true;
-					} else if (!attributes.hasOwnProperty(attr.nodeName)) { //new attribute
-						changes[attr.nodeName] = {oldValue: '', newValue: attr.nodeValue}
-						hasChanges = true;
+		if (o.hasOwnProperty('isComputedStyle') && o.isComputedStyle == 'true') { /* extensive and slow - polling to check on computed style properties */
+			return this.each(function(i, _this) {
+				if (!o.hasOwnProperty('properties') ||
+						Object.prototype.toString.call(o.properties) !== '[object Array]' ||
+							o.properties.length == 0) { return false; } //return if no properties found
+				var attributes = {}; //store computed properties
+				for (var i = 0; i < o.properties.length; i++) {
+					attributes[o.properties[i]] = $(this).css(o.properties[i]);
+				}			
+				var _this = this;
+				$(this).data('attrchange-polling-timer', setInterval(function () {
+					var changes = {}, hasChanges = false; // attrName: { oldValue: xxx, newValue: yyy}						
+					for (var comuptedVal, i = 0; i < o.properties.length; i++){
+						comuptedVal = $(_this).css(o.properties[i]);
+						if (attributes[o.properties[i]] !== comuptedVal) {
+							hasChanges = true;
+							changes[o.properties[i]] = {oldValue: attributes[o.properties[i]], newValue: comuptedVal};
+							attributes[o.properties[i]] = comuptedVal //add the attribute to the orig						
+						}
 					}
-					attributes[attr.nodeName] = attr.nodeValue; //add the attribute to the orig
-				}
-				if (hasChanges && typeof $(_this).data('attrchange-tdisconnect') === 'undefined') { //disconnected logically
-					o.callback.call(_this, changes);
-				}
-			}, (o.pollInterval)?o.pollInterval: 1000)).data('attrchange-method', 'polling').data('attrchange-pollInterval', o.pollInterval);
-		});
+					if (hasChanges && typeof $(_this).data('attrchange-tdisconnect') === 'undefined') { //disconnected logically
+						o.callback.call(_this, changes);
+					}
+				}, (o.pollInterval)?o.pollInterval: 1000)).data('attrchange-method', 'polling').data('attrchange-pollInterval', o.pollInterval);
+			});
+		} else {
+			return this.each(function(i, _this) { /* this one is programmatic polling */
+				var attributes = {};
+				for (var attr, i=0, attrs=_this.attributes, l=attrs.length; i<l; i++){
+					attr = attrs.item(i);
+					attributes[attr.nodeName] = attr.nodeValue;
+				}						
+				$(_this).data('attrchange-polling-timer', setInterval(function () {
+					var changes = {}, hasChanges = false; // attrName: { oldValue: xxx, newValue: yyy}						
+					for (var attr, i=0, attrs=_this.attributes, l=attrs.length; i<l; i++){
+						attr = attrs.item(i);							
+						if (attributes.hasOwnProperty(attr.nodeName) &&
+								attributes[attr.nodeName] != attr.nodeValue) { //check the values
+							changes[attr.nodeName] = {oldValue: attributes[attr.nodeName], newValue: attr.nodeValue};
+							hasChanges = true;
+						} else if (!attributes.hasOwnProperty(attr.nodeName)) { //new attribute
+							changes[attr.nodeName] = {oldValue: '', newValue: attr.nodeValue};
+							hasChanges = true;
+						}
+						attributes[attr.nodeName] = attr.nodeValue; //add the attribute to the orig
+					}
+					if (hasChanges && typeof $(_this).data('attrchange-tdisconnect') === 'undefined') { //disconnected logically
+						o.callback.call(_this, changes);
+					}
+				}, (o.pollInterval)?o.pollInterval: 1000)).data('attrchange-method', 'polling').data('attrchange-pollInterval', o.pollInterval);
+			});
+		}
 	}
 }

@@ -10,7 +10,7 @@
     <script src="../js/attrchange_ext.js"></script>
 	<style>
 		html{ color: #333; font-family: Verdana, Geneva, sans-serif; font-size: 12px; }
-		.test { border: 1px solid blue; padding: 10px; width: 200px; overflow: hidden; background-color: white; position: absolute; top: 40px; }
+		.test { border: 1px solid blue; padding: 10px; width: 200px; overflow: hidden; background-color: white; font-size: 0.9em;  line-height: 1em;}
 		.current { color: blue; }
 		.buttons { margin: 10px 0; }
 		.logger { height: 200px; overflow: auto; border: 1px solid #4169E1; background-color: #DADFFA; color: black; right: 0px; top: 0px; font-size: 0.9em; padding-left: 2px; overflow-y: scroll;  position:fixed; width: 620px;}
@@ -19,20 +19,19 @@
 	<script>
 		$(function () {			
 			$('.test').attrchange('polling', {
+				isComputedStyle: 'true',
 				pollingInterval: 5000, 
+				properties: ['height'],
 				callback: function (changes) {
 					var logger = [];
 					for (var keys in changes) {
-						var properties = $(this).attrchange('getProperties');
+						var properties = $(this).attrchange('getProperties');						
 						logger.push('Status: ' + properties.status + '. Attribute Name: ' + keys + ' Prev Value: ' + changes[keys].oldValue + ' New Value: ' + changes[keys].newValue);
 					}
 					logMessage(logger.join(''));
 				}
 			});
 			
-			$('button.addTop').click (function () {
-				$('.test').css('top', '+=10px');
-			})
 			$('button.disconnect').click (function () {
 				var props = $('.test').attrchange('disconnect').attrchange('getProperties');
 				logMessage('Status: ' + props.status);				
@@ -44,7 +43,7 @@
 			$('button.remove').click (function () {
 				var props = $('.test').attrchange('remove').attrchange('getProperties');
 				logMessage('Status: ' + props.status);
-			});
+			});			
 			var $logger = $('.logger'); 
 			function logMessage(msg) {
 				$logger.find('p').removeClass('current');
@@ -55,11 +54,12 @@
 	
   </head>
   <body>
-  	<div class="test">Click buttons above to test attrchange methods</div>
+  	<div class="test" contenteditable="true">This is a content editable div. Type something so the div height increases which will be detected by polling.</div>
   	<div class="logger"></div>
-  	<button class="addTop">Add 10px Top</button>
-  	<button class="disconnect">Disconnect</button>
-  	<button class="reconnect">Re-connect</button>
-  	<button class="remove">Remove</button>
+  	<div class="buttons">
+	  	<button class="disconnect">Disconnect</button>
+	  	<button class="reconnect">Re-connect</button>
+	  	<button class="remove">Remove</button>
+  	</div>
   </body>
 </html>
