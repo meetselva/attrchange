@@ -19,9 +19,9 @@ $.fn.attrchange.extensions = { /*attrchange option/extension*/
 				} else if (attrchangeMethod == 'polling') {
 					clearInterval($(this).data('attrchange-polling-timer'));
 				}
-			}).removeData('attrchange-method');
+			}).removeData(['attrchange-method', 'attrchange-status']);
 		} else { //logical disconnect
-			return this.data('attrchange-tdisconnect', 'tdisconnect'); //set a flag that prevents triggering callback onattrchange
+			return this.data('attrchange-status', 'disconnected'); //set a flag that prevents triggering callback onattrchange
 		}
 	},
 	remove: function (o) {
@@ -34,11 +34,11 @@ $.fn.attrchange.extensions = { /*attrchange option/extension*/
 			method: attrchangeMethod,
 			isPolling: (attrchangeMethod == 'polling'),
 			pollingInterval: (typeof pollInterval === 'undefined')?0:parseInt(pollInterval, 10),
-			status: (typeof attrchangeMethod === 'undefined')?'removed': (typeof $(this).data('attrchange-tdisconnect') === 'undefined')?'connected':'disconnected'
+			status: (typeof attrchangeMethod === 'undefined')?'removed': $(this).data('attrchange-status')
 		}
 	},
 	reconnect: function (o) {//reconnect possible only when there is a logical disconnect
-		return this.removeData('attrchange-tdisconnect');
+		return this.data('attrchange-status', 'connected');
 	},
 	polling: function (o) {
 		if (o.hasOwnProperty('isComputedStyle') && o.isComputedStyle == 'true') { /* extensive and slow - polling to check on computed style properties */
@@ -60,11 +60,11 @@ $.fn.attrchange.extensions = { /*attrchange option/extension*/
 							changes[o.properties[i]] = {oldValue: attributes[o.properties[i]], newValue: comuptedVal};
 							attributes[o.properties[i]] = comuptedVal //add the attribute to the orig						
 						}
-					}
-					if (hasChanges && typeof $(_this).data('attrchange-tdisconnect') === 'undefined') { //disconnected logically
+					}					
+					if (hasChanges && $(_this).data('attrchange-status') === 'connected') { //disconnected logically
 						o.callback.call(_this, changes);
 					}
-				}, (o.pollInterval)?o.pollInterval: 1000)).data('attrchange-method', 'polling').data('attrchange-pollInterval', o.pollInterval);
+				}, (o.pollInterval)?o.pollInterval: 1000)).data('attrchange-method', 'polling').data('attrchange-pollInterval', o.pollInterval).data('attrchange-status', 'connected');
 			});
 		} else {
 			return this.each(function(i, _this) { /* this one is programmatic polling */
@@ -87,10 +87,10 @@ $.fn.attrchange.extensions = { /*attrchange option/extension*/
 						}
 						attributes[attr.nodeName] = attr.nodeValue; //add the attribute to the orig
 					}
-					if (hasChanges && typeof $(_this).data('attrchange-tdisconnect') === 'undefined') { //disconnected logically
+					if (hasChanges && $(_this).data('attrchange-status') === 'connected') { //disconnected logically
 						o.callback.call(_this, changes);
 					}
-				}, (o.pollInterval)?o.pollInterval: 1000)).data('attrchange-method', 'polling').data('attrchange-pollInterval', o.pollInterval);
+				}, (o.pollInterval)?o.pollInterval: 1000)).data('attrchange-method', 'polling').data('attrchange-pollInterval', o.pollInterval).data('attrchange-status', 'connected');
 			});
 		}
 	}

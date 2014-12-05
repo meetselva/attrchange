@@ -85,32 +85,32 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 						if (cfg.trackValues) {							
 							e.newValue = $(_this).attr(e.attributeName);
 						}						
-						if (typeof $(this).data('attrchange-tdisconnect') === 'undefined') { //disconnected logically
+						if ($(_this).data('attrchange-status') === 'connected') { //execute if connected
 							cfg.callback.call(_this, e);
 						}
 					});
 				});
 
-				return this.data('attrchange-method', 'Mutation Observer')
+				return this.data('attrchange-method', 'Mutation Observer').data('attrchange-status', 'connected')
 						.data('attrchange-obs', observer).each(function() {
 							observer.observe(this, mOptions);
 						});
 			} else if (isDOMAttrModifiedSupported()) { //Opera
 				//Good old Mutation Events
-				return this.data('attrchange-method', 'DOMAttrModified').on('DOMAttrModified', function(event) {
+				return this.data('attrchange-method', 'DOMAttrModified').data('attrchange-status', 'connected').on('DOMAttrModified', function(event) {
 					if (event.originalEvent) { event = event.originalEvent; }//jQuery normalization is not required 
 					event.attributeName = event.attrName; //property names to be consistent with MutationObserver
 					event.oldValue = event.prevValue; //property names to be consistent with MutationObserver
-					if (typeof $(this).data('attrchange-tdisconnect') === 'undefined') { //disconnected logically
+					if ($(this).data('attrchange-status') === 'connected') { //disconnected logically
 						cfg.callback.call(this, event);
 					}
 				});
 			} else if ('onpropertychange' in document.body) { //works only in IE		
-				return this.data('attrchange-method', 'propertychange').on('propertychange', function(e) {
+				return this.data('attrchange-method', 'propertychange').data('attrchange-status', 'connected').on('propertychange', function(e) {
 					e.attributeName = window.event.propertyName;
 					//to set the attr old value
 					checkAttributes.call($(this), cfg.trackValues, e);
-					if (typeof $(this).data('attrchange-tdisconnect') === 'undefined') { //disconnected logically
+					if ($(this).data('attrchange-status') === 'connected') { //disconnected logically
 						cfg.callback.call(this, e);
 					}
 				});
