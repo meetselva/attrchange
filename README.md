@@ -32,9 +32,9 @@ Following are some of the useful addon added to the extensions,
    * **pollingInterval** Returns an integer value of the polling interval.
    * **status** Returns a String information about the current connection status. It should be one of the values in ['connected', 'disconnected', 'removed']
 
+##### Full Documentation: 
+http://meetselva.github.com/attrchange/
+
 > **Important Note:** The below documentation link is for the core plugin and the information about extension are not available yet. I am working on a [new website](http://meetselva.github.io/) for documenation :wink:, until then please refer to the samples under examples folder to know about extensions.
 
 > Feel free to drop a comment or feedback at http://meetselva.github.io/#disqus or report an issue at https://github.com/meetselva/attrchange/issues
-
-##### Full Documentation: 
-http://meetselva.github.com/attrchange/
