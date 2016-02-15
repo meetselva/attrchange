@@ -53,7 +53,7 @@ https://github.com/meetselva/attrchange/blob/master/MIT-License.txt
 			|| window.WebKitMutationObserver;
 
 	$.fn.attrchange = function(a, b) {
-		if (typeof a == 'object') {//core
+		if (typeof a === 'object' || typeof a === 'function') {//core
 			var cfg = {
 				trackValues : false,
 				callback : $.noop
